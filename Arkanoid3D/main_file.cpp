@@ -15,9 +15,8 @@ int interval;
 
 void displayFrame(void) {
 		//Tutaj kod rysuj¹cy
-	glClearColor(0,1,1,1);	//czyszczenie okna do koloru
-	//glClear(GL_COLOR_BUFFER_BIT);	//w³aœciwe czyszcenie okna
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //czyszczenie buforów
+	glClearColor(1,1,1,0);	//czyszczenie okna do koloru
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //czyszczenie buforów  //w³aœciwe czyszcenie okna
     
     //okno wyczyszczone mo¿na dzia³aæ
 	mat4 M = mat4(1.0f);	
@@ -34,11 +33,6 @@ void displayFrame(void) {
 	float zFar);*/
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 	mat4 W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));
-	glColor3d(1.0f,1.0f,0.0f);  //kolorujemy
-	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
-	glEnable(GL_LIGHT0);	    //w³¹czamy œwiat³o
-	glEnable(GL_DEPTH_TEST);    //w³¹czanie zbuffora
-	glEnable(GL_COLOR_MATERIAL);    //kolorek po oœwietleniu
 	
 	    //³adowanie macierzy do modelu
 	glMatrixMode(GL_PROJECTION);
@@ -54,7 +48,7 @@ void displayFrame(void) {
 }
 
 
-void nextFrame(void) {
+void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	int actTime=glutGet(GLUT_ELAPSED_TIME);
 	interval=actTime-lastTime;
 	lastTime=actTime;
@@ -73,6 +67,11 @@ int main(int argc, char* argv[]) {
 		glutDisplayFunc(displayFrame);	//rejestracja obs³ugi odœwie¿aj¹ca okno
 		glutIdleFunc(nextFrame);
 	//tutaj kod inicjuj¹cy	
+	glColor3d(1.0f,1.0f,0.0f);  //kolorujemy
+	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
+	glEnable(GL_LIGHT0);	    //w³¹czamy œwiat³o
+	glEnable(GL_DEPTH_TEST);    //w³¹czanie zbuffora
+	glEnable(GL_COLOR_MATERIAL);    //kolorek po oœwietleniu
 
         glutMainLoop();
         return 0;
