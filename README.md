@@ -1,4 +1,4 @@
-Arkanoid3D
+﻿Arkanoid3D
 ==========
 
 Arkanoid 3D na grafikę
@@ -13,28 +13,51 @@ Wymagania:
 Podział zadań:
 
   I. Grafika:
-    a) modele i ich import
-      - paletka
-      - piłka
-      - klocek
-    b) otoczenie
-      - tło
-      - efekty
-      - światło
-      - cząsteczki
+    1) modele i ich import
+      a) paletka
+         - model w Blenderze
+         - tekstury
+         - import
+      b) piłka
+         - model w Blenderze
+         - tekstury
+         - import
+      c) klocek
+         - model w Blenderze
+         - tekstury
+         - import
+    2) otoczenie
+      a) tło
+         - pomieszczenie
+         - tekstury
+      b) efekty
+         - zmiana koloru piłki
+         - błyskawica na dole (?)
+      c) światło
+         - drugie źródło (piłka?)
+      d) cząsteczki
+         - rozwalanie bloków
 
-  II. Fizyka:
-    a) mechanika gry
-      - kolizje
-      - wykrywanie kolidujących obiektów
-      - odbicia
-      - usuwanie klocków
-      - stany gry
-      
+  II. Mechanika:
+    1) fizyka gry
+      a) kolizje
+         - piłki ze ścianami
+         - paletki ze ścianami
+         - piłki z blokami
+         - wykrywanie kolidujących obiektów
+      b) usuwanie klocków
+      c) stany gry
+         - menu (?)
+         - pauza (?)
+         - wygrana
+    2) sterowanie
+         - myszą
+         - klawiaturą
 Mechanizmy:
 
 
 Szczegóły:
 
 
-Uwagi:
+Uwagi: 
+układ kodu?
