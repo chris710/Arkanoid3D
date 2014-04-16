@@ -64,7 +64,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="init.cpp" />
     <ClCompile Include="main_file.cpp" />
+    <ClCompile Include="sterowanie.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="init.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="sterowanie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

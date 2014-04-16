@@ -1,10 +1,7 @@
-#include <windows.h> //Wymagane dla implementacji OpenGL w Visual Studio.
-#include "gl\gl.h"	//procedury opengl
-#include "gl\glut.h" //grafika i sterowanie
-#include "stdio.h" //Przydatne do wypisywania komunikatów na konsoli
-#include "glm\glm.hpp"	//matematyka
-#include "glm\gtc\matrix_transform.hpp"
-#include "glm\gtc\type_ptr.hpp"
+
+#include "main.h"
+#include "sterowanie.h"
+#include "init.h"
 
 using namespace glm;
 
@@ -19,12 +16,12 @@ void displayFrame(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //czyszczenie buforów  //w³aœciwe czyszcenie okna
     
     //okno wyczyszczone mo¿na dzia³aæ
-	mat4 M = mat4(1.0f);	
+	mat4 M = mat4(1.0f);	//macierz jednostkowa	
 	
 	mat4 V = lookAt(	    //wspó³rzêdne kamery
-	vec3(0.0f,0.0f,-5.0f),
-	vec3(0.0f,0.0f,0.0f),
-	vec3(0.0f,1.0f,0.0f));
+	vec3(0.0f,-3.0f,5.0f),	//gdzie
+	vec3(0.0f,0.0f,0.0f),	//kierunek
+	vec3(0.0f,1.0f,0.0f));	//wektor do góry
 
 	/*mat4 perspective(	    //w³asnoœci widoku
 	float fovy,
@@ -32,7 +29,7 @@ void displayFrame(void) {
 	float zNear,
 	float zFar);*/
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
-	mat4 W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));
+	//mat4 W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));
 	
 	    //³adowanie macierzy do modelu
 	glMatrixMode(GL_PROJECTION);
@@ -40,8 +37,9 @@ void displayFrame(void) {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(value_ptr(V*W));
 	    //od teraz mo¿na rysowaæ
-
-	glutSolidTeapot(1.5f);
+	createRoom();
+	
+	createBlocks();
 
 	//printf("FPS: %f\n",60/interval*1000);
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
@@ -67,7 +65,6 @@ int main(int argc, char* argv[]) {
 		glutDisplayFunc(displayFrame);	//rejestracja obs³ugi odœwie¿aj¹ca okno
 		glutIdleFunc(nextFrame);
 	//tutaj kod inicjuj¹cy	
-	glColor3d(1.0f,1.0f,0.0f);  //kolorujemy
 	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
 	glEnable(GL_LIGHT0);	    //w³¹czamy œwiat³o
 	glEnable(GL_DEPTH_TEST);    //w³¹czanie zbuffora
