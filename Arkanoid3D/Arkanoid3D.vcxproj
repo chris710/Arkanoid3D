@@ -68,6 +68,7 @@
     <ClCompile Include="main_file.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="RedBlock.cpp" />
+    <ClCompile Include="SilverBlock.cpp" />
     <ClCompile Include="sterowanie.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +76,7 @@
     <ClInclude Include="init.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="RedBlock.h" />
+    <ClInclude Include="SilverBlock.h" />
     <ClInclude Include="sterowanie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
