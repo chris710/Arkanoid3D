@@ -54,10 +54,20 @@ Podział zadań:
          - myszą
          - klawiaturą
 Mechanizmy:
-
-
+	Układ klas:
+		Block - zwykły klocek
+			RedBlock - daje ognistą piłkę, która rozwala wszystko za jednym dotknięciem
+			SilverBlock - da się uszkodzić tylko od góry
+			BlueBlock - daje drugą piłkę
+		Session- zawiera info o stanie klocków na planszy
+		BackgGround - tło i jego efekty
+		Ball - piłka
+		Paddle - spodek
+		
 Szczegóły:
 
 
 Uwagi: 
-układ kodu?
+Piszemy WSZYSTKO w klasach, w mainie wywołujemy po prostu gotowe f-cje z klas.
+Jeżeli f-cja ma ponad 20 linii - rozbij ją na mniejsze.
+Pamiętaj o nazewnictwie!
