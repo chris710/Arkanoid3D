@@ -4,6 +4,6 @@
 
 class Block {
 	//TODO
-}
+};
 
 #endif //BLOCK_H
