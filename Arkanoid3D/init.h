@@ -6,5 +6,9 @@ void createRoom();
 
 void createBlocks();
 
+// void createPaddle();
+
+// void createBall();
+
 
 #endif //INIT_H
