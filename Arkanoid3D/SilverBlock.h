@@ -3,6 +3,8 @@
 //plik nag³ówkowy klasy srebrnego bloczka, którego mo¿na zbiæ tlyko przez odbicie od górnej œciany
 
 #include "Block.h"
+
+class SilverBlock : public Block {
 	/***** 
 	* TODO:
 	*	- funkcja sprawdzaj¹ca czy zosta³ klocek zosta³ uderzony z góry
