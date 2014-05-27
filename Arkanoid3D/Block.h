@@ -7,9 +7,17 @@ private:
 	int X;	//pozycja X bloczka
 	int Y;	//pozycja Y bloczka
 	int health;	//ile uderzeñ zosta³o do zniszczenia bloczka
+	bool destroyed;	//czy zosta³ zniszczony
 	//TODO model i tekstura
 public:
 	//TODO konstruktor i destruktor
+	Block(int x, int y) {
+		this->X = x;
+		this->Y = y;
+		this->health = 1;
+		this->destroyed = false;
+	}
+
 	int getX() {
 		return this->X;
 	}
@@ -22,6 +30,9 @@ public:
 		return this->health;
 	}
 
+	int isDestroyed() {
+		return this->destroyed;
+	}
 	/***** 
 	* TODO metody:
 	*	- efekt zbicia bloczka
@@ -38,7 +49,7 @@ public:
 	}
 
 	void destroy() {
-		//TODO
+		this->destroyed = true;
 	}
 };
 
