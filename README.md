@@ -4,6 +4,20 @@
 Arkanoid 3D na grafikę
 
 
+Plan działań
+===========
+1. Bloczki, kulka i paletka w Blenderze
+2. Import
+3. Ułożenie ekranu
+4. Sterowanie paletką
+5. Poruszanie się kulki
+6. Wykrywanie porażki
+7. Odbicia
+8. Zbicia
+9. Efekty specjalne
+10. Wykrywanie zwycięstwa
+
+
 Dokumentacja
 ============
 
