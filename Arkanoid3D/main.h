@@ -10,10 +10,13 @@
 #include "glm\gtc\matrix_transform.hpp"
 #include "glm\gtc\type_ptr.hpp"
 #include<iostream>
+#include<vector>
+#include<fstream>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string>
+#include<sstream>
 
 
-void initialize();					//w³¹cza wszystkie openglowe rzeczy
- 		
-void printFPS(int actTime);			//liczy klatki na sekundê i wyœwietla je na konsoli (pobiera aktualny czas)
 
 #endif //MAIN_H
