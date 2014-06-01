@@ -7,8 +7,9 @@ using namespace glm;
 
 float speed=360; //360 stopni/s
 int lastTime=0;
-float angle;
-int interval;
+int interval;		//czas pomiêdzy klatkami
+int fps = 0;		//ile fpsów
+int lastFPSCheck; 
 
 void displayFrame(void) {
 		//Tutaj kod rysuj¹cy
@@ -18,7 +19,7 @@ void displayFrame(void) {
     //okno wyczyszczone mo¿na dzia³aæ
 	mat4 M = mat4(1.0f);	//macierz jednostkowa	
 	
-	mat4 V = lookAt(	    //wspó³rzêdne kamery
+	mat4 V = lookAt(	    //wspó³rzêdne kamery	//kamera jest sta³a!
 	vec3(0.0f,-3.0f,5.0f),	//gdzie
 	vec3(0.0f,0.0f,0.0f),	//kierunek
 	vec3(0.0f,1.0f,0.0f));	//wektor do góry
@@ -48,10 +49,11 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	int actTime=glutGet(GLUT_ELAPSED_TIME);		//TODO FPSy!!!
 	interval=actTime-lastTime;
 	lastTime=actTime;
-	
+
+	printFPS(actTime);
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////
-	angle+=speed*interval/1000.0;
-	if (angle>360) angle-=360;
+	//angle+=speed*interval/1000.0;
+	//if (angle>360) angle-=360;
 	glutPostRedisplay();
 }
 
@@ -71,4 +73,15 @@ int main(int argc, char* argv[]) {
 
         glutMainLoop();
         return 0;
+}
+
+
+
+void printFPS(int actTime) {
+	fps++;
+	if(actTime-lastFPSCheck>=1000) {
+		std::cout<<fps/((actTime-lastFPSCheck)/1000.0f)<<std::endl;
+		fps = 0;
+		lastFPSCheck = actTime;
+	}
 }

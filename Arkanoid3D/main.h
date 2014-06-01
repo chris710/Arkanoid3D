@@ -9,5 +9,8 @@
 #include "glm\glm.hpp"	//matematyka
 #include "glm\gtc\matrix_transform.hpp"
 #include "glm\gtc\type_ptr.hpp"
+#include<iostream>
+ 		
+void printFPS(int actTime);			//liczy klatki na sekundê i wyœwietla je na konsoli
 
 #endif //MAIN_H
