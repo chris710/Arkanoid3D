@@ -1,6 +1,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 //plik nag³ówkowy klasy bloczka
+#include"main.h"
 
 class Block {
 private:

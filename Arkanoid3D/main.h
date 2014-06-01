@@ -13,8 +13,7 @@
 
 
 void initialize();					//w³¹cza wszystkie openglowe rzeczy
-
  		
-void printFPS(int actTime);			//liczy klatki na sekundê i wyœwietla je na konsoli
+void printFPS(int actTime);			//liczy klatki na sekundê i wyœwietla je na konsoli (pobiera aktualny czas)
 
 #endif //MAIN_H

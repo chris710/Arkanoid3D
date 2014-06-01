@@ -1,6 +1,4 @@
-
-#include "main.h"
-#include "sterowanie.h"
+#include"main_file.h"
 
 using namespace glm;
 
@@ -45,7 +43,7 @@ void displayFrame(void) {
 
 
 void nextFrame(void) {//to co robi siê pomiêdzy klatkami
-	int actTime=glutGet(GLUT_ELAPSED_TIME);		//TODO FPSy!!!
+	int actTime=glutGet(GLUT_ELAPSED_TIME);
 	interval=actTime-lastTime;
 	lastTime=actTime;
 

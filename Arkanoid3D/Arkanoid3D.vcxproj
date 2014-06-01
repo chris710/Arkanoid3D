@@ -76,6 +76,7 @@
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlueBlock.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="main_file.h" />
     <ClInclude Include="RedBlock.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SilverBlock.h" />
