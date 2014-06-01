@@ -21,9 +21,6 @@
     <ClCompile Include="sterowanie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="init.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,9 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sterowanie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="main.h">

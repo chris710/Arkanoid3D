@@ -65,7 +65,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlueBlock.cpp" />
-    <ClCompile Include="init.cpp" />
     <ClCompile Include="main_file.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="RedBlock.cpp" />
@@ -76,7 +75,6 @@
   <ItemGroup>
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlueBlock.h" />
-    <ClInclude Include="init.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="RedBlock.h" />
     <ClInclude Include="Session.h" />

@@ -24,6 +24,11 @@ public:
 	//usuwa blok o podanych koordach
 	void removeBlock(int x, int y);
 
+	//funkcja tworz¹ca rzêdy bloczków
+	void createBlocks();
+
+	//funkcja tworz¹ca pomieszczenie z gr¹
+	void createRoom();
 };
 
 #endif //SESSION_H

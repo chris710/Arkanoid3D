@@ -1,15 +1,15 @@
 
 #include "main.h"
 #include "sterowanie.h"
-#include "init.h"
 
 using namespace glm;
 
-float speed=360; //360 stopni/s
+float speed=60; //360 stopni/s
 int lastTime=0;
 int interval;		//czas pomiêdzy klatkami
 int fps = 0;		//ile fpsów
-int lastFPSCheck; 
+float angle = 0;
+int lastFPSCheck;	//kiedy ostatnio by³y wyœweitlane fps
 
 void displayFrame(void) {
 		//Tutaj kod rysuj¹cy
@@ -26,20 +26,19 @@ void displayFrame(void) {
 
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);	//w³asnoœci widoku		//TODO zamieniæ na fcjê
 	/*				  (fovy, aspect,zNear,zFar);*/
-	//mat4 W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));
+
+	mat4 W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));
 	
-	    //³adowanie macierzy do modelu		//WTF???
-	glMatrixMode(GL_PROJECTION);
+	    //³adowanie macierzy do modelu
+	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
 	glLoadMatrixf(value_ptr(P));
-	glMatrixMode(GL_MODELVIEW);
+	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*W));
 
 	    //od teraz mo¿na rysowaæ
 	//////	CZÊŒÆ NA FUNKCJE RYSUJ¥CE	///////////
-	createRoom();
-	createBlocks();
-
-	//printf("FPS: %f\n",60/interval*1000);		//TODO sposób na wyœwietlanie FPS w konsoli
+	//createRoom();
+	//createBlocks();
 
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
 }
@@ -50,31 +49,37 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	interval=actTime-lastTime;
 	lastTime=actTime;
 
-	printFPS(actTime);
-	//////// CZÊŒÆ NA MECHANIKÊ	////////////
-	//angle+=speed*interval/1000.0;
-	//if (angle>360) angle-=360;
+	printFPS(actTime);		//wypisuje fpsy
+
+	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
+	angle+=speed*interval/1000.0;
+	if (angle>360) angle-=360;
+
 	glutPostRedisplay();
 }
 
 int main(int argc, char* argv[]) {
-        glutInit(&argc, argv);						//TODO wywaliæ do fcji
-        glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);	//inicjalizacja buforów
-        glutInitWindowSize(800,800);	//opcje okna
-        glutInitWindowPosition(0,0);
-        glutCreateWindow("Program OpenGL");       //nadanie tytu³u okna 
-		glutDisplayFunc(displayFrame);	//rejestracja obs³ugi odœwie¿aj¹ca okno
-		glutIdleFunc(nextFrame);
+	glutInit(&argc, argv);
+	initialize();
+					//TODO inicjalizacja klas
+	glutMainLoop();
+	return 0;
+}
+
+
+void initialize() {
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);	//inicjalizacja buforów
+	glutInitWindowSize(800,800);	//opcje okna
+	glutInitWindowPosition(0,0);
+	glutCreateWindow("Arkanoid 3D");       //nadanie tytu³u okna 
+	glutDisplayFunc(displayFrame);	//rejestracja obs³ugi odœwie¿aj¹ca okno
+	glutIdleFunc(nextFrame);
 	//tutaj kod inicjuj¹cy				//TODO to te¿	
 	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
 	glEnable(GL_LIGHT0);	    //w³¹czamy œwiat³o
 	glEnable(GL_DEPTH_TEST);    //w³¹czanie zbuffora
 	glEnable(GL_COLOR_MATERIAL);    //kolorek po oœwietleniu
-
-        glutMainLoop();
-        return 0;
 }
-
 
 
 void printFPS(int actTime) {

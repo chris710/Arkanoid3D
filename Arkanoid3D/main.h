@@ -10,6 +10,10 @@
 #include "glm\gtc\matrix_transform.hpp"
 #include "glm\gtc\type_ptr.hpp"
 #include<iostream>
+
+
+void initialize();					//w³¹cza wszystkie openglowe rzeczy
+
  		
 void printFPS(int actTime);			//liczy klatki na sekundê i wyœwietla je na konsoli
 
