@@ -2,6 +2,11 @@
 //plik Ÿród³a klasy sesji 
 
 
+Session::Session(){
+	createBlocks();
+}
+
+
 bool Session::win() {
 	if(this->grid.empty()) {
 		return true;
@@ -16,9 +21,11 @@ void Session::removeBlock(int x, int y) {
 }
 
 void Session::createBlocks() {
-	for(int i = 0; i<3; ++i) {
-		
-	}
+	vector<Block> row;
+	for(int i = 0; i<3; ++i) {}
+	Block *Bloczek1 = new Block(0,0);
+	row.push_back(*Bloczek1);
+	this->grid.push_back(row);
 }
 
 void Session::createRoom() {

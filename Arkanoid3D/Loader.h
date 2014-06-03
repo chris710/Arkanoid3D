@@ -10,6 +10,7 @@ public:
 	~Loader(void);
 
 	//³aduje objekt z pliku
-	void load(const char* filename, vector<glm::vec4> &vertices, vector<glm::vec4> &normals, vector<GLushort> &elements);
+	bool load(const char* filename, std::vector < glm::vec3 > & vertices, std::vector < glm::vec2 > & uvs, std::vector < glm::vec3 > & normals);
+	
 };
 

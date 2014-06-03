@@ -18,6 +18,7 @@ class Session {
 public:
 	vector<vector<Block> > grid;		//macierz bloczków
 
+	Session();
 	//sprawdza, czy s¹ jeszcze klocki
 	bool win();
 	

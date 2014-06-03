@@ -1,7 +1,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 //plik nag³ówkowy klasy bloczka
-#include"main.h"
+#include"Loader.h"
 
 class Block {
 private:
@@ -9,17 +9,16 @@ private:
 	float Y;	//pozycja Y bloczka
 	int health;	//ile uderzeñ zosta³o do zniszczenia bloczka
 	bool destroyed;	//czy zosta³ zniszczony
-	
-
 	//TODO model i tekstura
+	vector<glm::vec3> vertices;
+	vector<glm::vec2> uvs;
+	vector<glm::vec3> normals;
+
 public:
 	//TODO konstruktor i destruktor
-	Block(float x, float y) {
-		this->X = x;
-		this->Y = y;
-		this->health = 1;
-		this->destroyed = false;
-	}
+	Block(float x, float y);
+
+	void drawBlock();
 
 	int getX() {
 		return this->X;

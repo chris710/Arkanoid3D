@@ -9,12 +9,10 @@ int fps = 0;		//ile fpsów
 float angle = 0;
 int lastFPSCheck;	//kiedy ostatnio by³y wyœweitlane fps
 
-void displayFrame(void) {
-		//Tutaj kod rysuj¹cy
+void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funkcji
 	glClearColor(1,1,1,0);	//czyszczenie okna do koloru
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //czyszczenie buforów  //w³aœciwe czyszcenie okna
-    
-    //okno wyczyszczone mo¿na dzia³aæ
+							    //okno wyczyszczone mo¿na dzia³aæ
 	mat4 M = mat4(1.0f);	//macierz jednostkowa	
 	
 	mat4 V = lookAt(	    //wspó³rzêdne kamery	//kamera jest sta³a!
@@ -60,6 +58,7 @@ int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	initialize();
 					//TODO inicjalizacja klas
+	Session *NewSession = new Session();
 	glutMainLoop();
 	return 0;
 }
