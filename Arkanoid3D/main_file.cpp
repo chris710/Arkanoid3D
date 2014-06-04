@@ -17,7 +17,7 @@ void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funk
 	mat4 M = mat4(1.0f);	//macierz jednostkowa	
 	
 	mat4 V = lookAt(	    //wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,-3.0f,5.0f),	//gdzie
+	vec3(0.0f,0.0f,10.0f),	//gdzie
 	vec3(0.0f,0.0f,0.0f),	//kierunek
 	vec3(0.0f,1.0f,0.0f));	//wektor do góry
 
@@ -34,8 +34,6 @@ void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funk
 
 	    //od teraz mo¿na rysowaæ
 	//////	CZÊŒÆ NA FUNKCJE RYSUJ¥CE	///////////
-	//createRoom();
-	//createBlocks();
 	NewSession->drawAll();
 
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
