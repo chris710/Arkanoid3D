@@ -8,6 +8,7 @@ int interval;		//czas pomiêdzy klatkami
 int fps = 0;		//ile fpsów
 float angle = 0;
 int lastFPSCheck;	//kiedy ostatnio by³y wyœweitlane fps
+Session *NewSession = new Session();
 
 void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funkcji
 	glClearColor(1,1,1,0);	//czyszczenie okna do koloru
@@ -35,7 +36,7 @@ void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funk
 	//////	CZÊŒÆ NA FUNKCJE RYSUJ¥CE	///////////
 	//createRoom();
 	//createBlocks();
-	NewSession->draw();			//nie widaæ sesji
+	NewSession->drawAll();
 
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
 }
@@ -59,7 +60,6 @@ int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	initialize();
 					//TODO inicjalizacja klas
-	Session *NewSession = new Session();
 	glutMainLoop();
 	return 0;
 }
