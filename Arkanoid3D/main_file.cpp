@@ -29,12 +29,13 @@ void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funk
 	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
-	glLoadMatrixf(value_ptr(V*W));
+	glLoadMatrixf(value_ptr(V*M));
 
 	    //od teraz mo¿na rysowaæ
 	//////	CZÊŒÆ NA FUNKCJE RYSUJ¥CE	///////////
 	//createRoom();
 	//createBlocks();
+	NewSession->draw();			//nie widaæ sesji
 
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
 }

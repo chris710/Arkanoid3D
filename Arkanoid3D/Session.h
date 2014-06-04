@@ -16,7 +16,7 @@ class Session {
 	*
 	*****/
 public:
-	vector<vector<Block> > grid;		//macierz bloczków
+	vector<Block> grid;		//macierz bloczków
 
 	Session();
 	//sprawdza, czy s¹ jeszcze klocki
@@ -30,6 +30,9 @@ public:
 
 	//funkcja tworz¹ca pomieszczenie z gr¹
 	void createRoom();
+
+	//funckja rysuj¹ca
+	void drawAll();
 };
 
 #endif //SESSION_H

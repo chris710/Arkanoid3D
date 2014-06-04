@@ -15,7 +15,7 @@ bool Session::win() {
 }
 
 void Session::removeBlock(int x, int y) {
-	if(this->grid[x][y].isDestroyed()) {
+	if(this->grid[x].isDestroyed()) {
 		//this.grid[x][y]->
 	}
 }
@@ -24,11 +24,16 @@ void Session::createBlocks() {
 	vector<Block> row;
 	for(int i = 0; i<3; ++i) {}
 	Block *Bloczek1 = new Block(0,0);
-	row.push_back(*Bloczek1);
-	this->grid.push_back(row);
+	this->grid.push_back(*Bloczek1);
 }
 
 void Session::createRoom() {
 	//glColor3d(1.0f,1.0f,1.0f);  //kolorujemy kwadrat
 	//glutSolidCube(3.5f);		//stwórz wielki bia³y szeœcian
+}
+
+void Session::drawAll() {
+	for(int i = 0; i<this->grid.size(); ++i) {
+		this->grid[i].drawBlock();
+	}
 }
