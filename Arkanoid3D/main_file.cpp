@@ -17,7 +17,7 @@ void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funk
 	mat4 M = mat4(1.0f);	//macierz jednostkowa	
 	
 	mat4 V = lookAt(	    //wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,10.0f),	//gdzie
+	vec3(3.0f,5.0f,10.0f),	//gdzie
 	vec3(0.0f,0.0f,0.0f),	//kierunek
 	vec3(0.0f,1.0f,0.0f));	//wektor do góry
 
@@ -71,10 +71,12 @@ void initialize() {
 	glutDisplayFunc(displayFrame);	//rejestracja obs³ugi odœwie¿aj¹ca okno
 	glutIdleFunc(nextFrame);
 	//tutaj kod inicjuj¹cy				//TODO to te¿	
-	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
-	glEnable(GL_LIGHT0);	    //w³¹czamy œwiat³o
 	glEnable(GL_DEPTH_TEST);    //w³¹czanie zbuffora
+	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
+
+
 	glEnable(GL_COLOR_MATERIAL);    //kolorek po oœwietleniu
+	glShadeModel(GL_SMOOTH);
 }
 
 

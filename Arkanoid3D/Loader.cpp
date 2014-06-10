@@ -59,7 +59,7 @@ bool Loader::load(const char* filename, std::vector < glm::vec3 > & vertices, st
 				uvIndices    .push_back(uvIndex[2]);
 				normalIndices.push_back(normalIndex[0]);
 				normalIndices.push_back(normalIndex[1]);
-				normalIndices.push_back(normalIndex[2]);	
+				normalIndices.push_back(normalIndex[2]);
 		}
 	}		//koniec przetwarzania pliku
 	for( unsigned int i=0; i<vertexIndices.size(); i++ ){
