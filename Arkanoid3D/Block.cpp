@@ -6,7 +6,7 @@ Block::Block(float x, float y) {
 		this->health = 1;
 		this->destroyed = false;
 		Loader newLoader;
-		newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);
+		newLoader.load("res/kulka.obj",this->vertices,this->uvs,this->normals);
 		
 }
 
@@ -26,7 +26,7 @@ void Block::drawBlock() {
     glLightfv( id, GL_POSITION, position );
 
 //// TEKSTURY	
-	if (img.Load("res/bloczek.tga")==IMG_OK) {
+	if (img.Load("res/kulka.tga")==IMG_OK) {
 		glGenTextures(1,&tex); //Zainicjuj uchwyt tex
 		glBindTexture(GL_TEXTURE_2D,tex); //Przetwarzaj uchwyt tex
 	if (img.GetBPP()==24) //Obrazek 24bit
