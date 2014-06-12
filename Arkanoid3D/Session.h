@@ -3,6 +3,7 @@
 //plik nag³ówkowy klasy, dotycz¹cej aktualnej rozgrywki
 
 #include "Block.h"
+
 #include<vector>
 
 using namespace std;
@@ -18,6 +19,7 @@ class Session {
 public:
 	vector<Block> grid;		//macierz bloczków
 
+
 	Session();
 	//sprawdza, czy s¹ jeszcze klocki
 	bool win();
@@ -30,6 +32,9 @@ public:
 
 	//funkcja tworz¹ca pomieszczenie z gr¹
 	void createRoom();
+
+	// funkcja ³aduj¹ca tekstury
+	void Session::loadingImages(); 
 
 	//funckja rysuj¹ca
 	void drawAll();

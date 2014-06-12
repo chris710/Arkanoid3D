@@ -10,6 +10,8 @@ float angle = 0;
 int lastFPSCheck;	//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
+
+
 void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funkcji
 	glClearColor(1,1,1,0);	//czyszczenie okna do koloru
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //czyszczenie buforów  //w³aœciwe czyszcenie okna
@@ -57,11 +59,14 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	initialize();
-					//TODO inicjalizacja klas
+
+	//TODO inicjalizacja klas
+
 	glutMainLoop();
+
+//	glDeleteTextures(1,&tex);
 	return 0;
 }
-
 
 void initialize() {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);	//inicjalizacja buforów
