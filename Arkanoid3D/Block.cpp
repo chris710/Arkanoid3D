@@ -6,7 +6,7 @@ Block::Block(float x, float y) {
 		this->health = 1;
 		this->destroyed = false;
 		Loader newLoader;
-		newLoader.load("res/bloczek2.obj",this->vertices,this->uvs,this->normals);
+		newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);
 }
 
 void Block::drawBlock() {
