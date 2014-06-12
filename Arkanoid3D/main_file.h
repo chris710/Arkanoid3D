@@ -2,11 +2,12 @@
 #define MAIN_FILE_H
 //plik nag³ówkowy do maina
 
-#include"RedBlock.h"
-#include"BlueBlock.h"
-#include"SilverBlock.h"
+#include "RedBlock.h"
+#include "BlueBlock.h"
+#include "SilverBlock.h"
 #include "sterowanie.h"
-#include"Session.h"
+#include "Session.h"
+#include "tga.h"
 
 void initialize();					//w³¹cza wszystkie openglowe rzeczy
  		

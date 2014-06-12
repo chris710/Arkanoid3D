@@ -73,6 +73,7 @@
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SilverBlock.cpp" />
     <ClCompile Include="sterowanie.cpp" />
+    <ClCompile Include="tga.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
@@ -84,6 +85,7 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="SilverBlock.h" />
     <ClInclude Include="sterowanie.h" />
+    <ClInclude Include="tga.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
