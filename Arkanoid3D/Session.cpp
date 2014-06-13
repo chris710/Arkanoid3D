@@ -22,9 +22,11 @@ void Session::removeBlock(int x, int y) {
 
 void Session::createBlocks() {
 	vector<Block> row;
-	for(int i = 0; i<3; ++i) {}
-	Block *Bloczek1 = new Block(0,0);
-	this->grid.push_back(*Bloczek1);
+	for(float i = 1; i<3; i++)
+	{
+		Block *Bloczek1 = new Block(i,0);
+		this->grid.push_back(*Bloczek1);
+	}
 }
 
 void Session::createRoom() {

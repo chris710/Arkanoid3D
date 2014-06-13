@@ -3,6 +3,7 @@
 //plik nag³ówkowy klasy bloczka
 #include"Loader.h"
 
+
 class Block {
 private:
 	float X;	//pozycja X bloczka

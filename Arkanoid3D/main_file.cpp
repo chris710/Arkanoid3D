@@ -2,41 +2,46 @@
 
 using namespace glm;
 
-float speed=60; //360 stopni/s
+float speed=60;							//360 stopni/s
 int lastTime=0;
-int interval;		//czas pomiêdzy klatkami
-int fps = 0;		//ile fpsów
+int interval;							//czas pomiêdzy klatkami
+int fps = 0;							//ile fpsów
 float angle = 0;
-int lastFPSCheck;	//kiedy ostatnio by³y wyœweitlane fps
+int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
 
 
-void displayFrame(void) {		//Tutaj kod rysuj¹cy		//TODO wywaliæ wszystko do funkcji
-	glClearColor(1,1,1,0);	//czyszczenie okna do koloru
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //czyszczenie buforów  //w³aœciwe czyszcenie okna
-							    //okno wyczyszczone mo¿na dzia³aæ
-	mat4 M = mat4(1.0f);	//macierz jednostkowa	
-	
-	mat4 V = lookAt(	    //wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(3.0f,5.0f,10.0f),	//gdzie
-	vec3(0.0f,0.0f,0.0f),	//kierunek
-	vec3(0.0f,1.0f,0.0f));	//wektor do góry
+void displayFrame(void) {											//Tutaj kod rysuj¹cy		
+	glClearColor(1,1,1,0);											//czyszczenie okna do koloru
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				//czyszczenie buforów  //w³aœciwe czyszcenie okna
+																		
+	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
+	vec3(0.0f,0.0f,30.0f),									//gdzie
+	vec3(0.0f,-5.0f,0.0f),									//kierunek
+	vec3(0.0f,1.0f,0.0f));									//wektor do góry
 
-	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);	//w³asnoœci widoku		//TODO zamieniæ na fcjê
-	/*				  (fovy, aspect,zNear,zFar);*/
-
-	mat4 W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));
+// macierze
+	mat4 M = mat4(1.0f);								//macierz jednostkowa	
+	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);		//w³asnoœci widoku		//TODO zamieniæ na funkcjê 
+	//				  (fovy, aspect,zNear,zFar );	
+	M=glm::translate(M, glm::vec3(-11.0f,5.0f,0.0f));	// ( <-11,11>, <-5,5>, 0 )			11bloczków w wierszu 
+//	W=rotate(M, angle, vec3(0.0f,1.0f,0.0f));		// macierz rotacji
 	
-	    //³adowanie macierzy do modelu
+// ³adowanie macierzy do modelu
 	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*M));
 
-	    //od teraz mo¿na rysowaæ
-	//////	CZÊŒÆ NA FUNKCJE RYSUJ¥CE	///////////
+
+
+//////	CZÊŒÆ NA FUNKCJE RYSUJ¥CE	///////////
 	NewSession->drawAll();
+
+
+
+///////////////////////////////////////////////
 
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
 }
@@ -70,17 +75,17 @@ int main(int argc, char* argv[]) {
 
 void initialize() {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);	//inicjalizacja buforów
-	glutInitWindowSize(800,800);	//opcje okna
-	glutInitWindowPosition(0,0);
-	glutCreateWindow("Arkanoid 3D");       //nadanie tytu³u okna 
-	glutDisplayFunc(displayFrame);	//rejestracja obs³ugi odœwie¿aj¹ca okno
+	glutInitWindowSize(800,800);			//opcje okna
+	glutInitWindowPosition(400,0);
+	glutCreateWindow("Arkanoid 3D");		//nadanie tytu³u okna 
+	glutDisplayFunc(displayFrame);			//rejestracja obs³ugi odœwie¿aj¹ca okno
 	glutIdleFunc(nextFrame);
-	//tutaj kod inicjuj¹cy				//TODO to te¿	
-	glEnable(GL_DEPTH_TEST);    //w³¹czanie zbuffora
-	glEnable(GL_LIGHTING);	    //w³¹czamy oœwietlenie
+	//tutaj kod inicjuj¹cy					//TODO to te¿	
+	glEnable(GL_DEPTH_TEST);				//w³¹czanie zbuffora
+	glEnable(GL_LIGHTING);					//w³¹czamy oœwietlenie
 
 
-	glEnable(GL_COLOR_MATERIAL);    //kolorek po oœwietleniu
+	glEnable(GL_COLOR_MATERIAL);			//kolorek po oœwietleniu
 	glShadeModel(GL_SMOOTH);
 }
 

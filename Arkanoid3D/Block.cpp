@@ -1,12 +1,14 @@
 #include "Block.h"
 //plik Ÿród³a klasy bloczka
+using namespace glm;
+
 Block::Block(float x, float y) {
 		this->X = x;
 		this->Y = y;
 		this->health = 1;
 		this->destroyed = false;
 		Loader newLoader;
-		newLoader.load("res/kulka.obj",this->vertices,this->uvs,this->normals);
+		newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);
 		
 }
 
@@ -26,7 +28,7 @@ void Block::drawBlock() {
     glLightfv( id, GL_POSITION, position );
 
 //// TEKSTURY	
-	if (img.Load("res/kulka.tga")==IMG_OK) {
+	if (img.Load("res/bloczek.tga")==IMG_OK) {
 		glGenTextures(1,&tex); //Zainicjuj uchwyt tex
 		glBindTexture(GL_TEXTURE_2D,tex); //Przetwarzaj uchwyt tex
 	if (img.GetBPP()==24) //Obrazek 24bit
@@ -74,4 +76,7 @@ void Block::drawBlock() {
 	glDisableClientState( GL_VERTEX_ARRAY );
 	glDisableClientState( GL_NORMAL_ARRAY );
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	//mat4 M = mat4(1.0f);
+	//M=glm::translate(M, glm::vec3(60.0f,60.0f,2.0f));
 }
