@@ -9,18 +9,11 @@
 using namespace std;
 //stan bloczków i stan gry
 class Session { 
-	/***** 
-	* TODO:
-	*	- liczba bloczków
-	*	- wykrycie zwyciêstwa
-	*	- 
-	*
-	*****/
+
 public:
-	vector<Block> grid;		//macierz bloczków
-
-
+	vector <vector<Block>> grid;		//macierz bloczków
 	Session();
+
 	//sprawdza, czy s¹ jeszcze klocki
 	bool win();
 	
@@ -32,9 +25,6 @@ public:
 
 	//funkcja tworz¹ca pomieszczenie z gr¹
 	void createRoom();
-
-	// funkcja ³aduj¹ca tekstury
-	void Session::loadingImages(); 
 
 	//funckja rysuj¹ca
 	void drawAll();

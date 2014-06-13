@@ -23,7 +23,7 @@ public:
 	mat4 Macierz;
 	Block(float x, float y);
 
-	void drawBlock(int i);
+	void drawBlock(int i, int j);
 
 	int getX() {
 		return this->X;

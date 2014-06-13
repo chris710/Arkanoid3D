@@ -12,7 +12,7 @@ Block::Block(float x, float y) {
 				
 }
 
-void Block::drawBlock(int i) {
+void Block::drawBlock(int i, int j) {
 
 ////    ŒWIAT£O
 	GLenum id = GL_LIGHT0;		
@@ -48,8 +48,9 @@ void Block::drawBlock(int i) {
 	vec3(0.0f,-5.0f,0.0f),									//kierunek
 	vec3(0.0f,1.0f,0.0f));	
 	this->Macierz = mat4(1.0f);
-	float k = (-11) + 2*(float)i;
-	this->Macierz = glm::translate(this->Macierz, glm::vec3(k,5.0f,0.0f));
+	float k = (-11.0f) + 2.02*(float)i;
+	float l = ( 5.0f ) - 0.802*(float)j;
+	this->Macierz = glm::translate(this->Macierz, glm::vec3(k, l, 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 
 // ³adowanie macierzy do modelu

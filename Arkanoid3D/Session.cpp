@@ -15,17 +15,19 @@ bool Session::win() {
 }
 
 void Session::removeBlock(int x, int y) {
-	if(this->grid[x].isDestroyed()) {
-		//this.grid[x][y]->
+	if(this->grid[y][x].isDestroyed()) {
+		//this.grid[y][x]->
 	}
 }
 
 void Session::createBlocks() {
-	vector<Block> row;
-	for(int i = 0; i<12; i++)
-	{
-		Block *Bloczek = new Block(0,0);
-		this->grid.push_back(*Bloczek);
+	for(int j=0; j<12; j++){
+		vector<Block> row;
+		for(int i = 0; i<12; i++){
+			Block *Bloczek = new Block(i,j);
+			row.push_back(*Bloczek);
+		}
+		this->grid.push_back(row);
 	}
 }
 
@@ -37,7 +39,7 @@ void Session::createRoom() {
 
 
 void Session::drawAll() {
-	for(int i = 0; i<this->grid.size(); ++i) {
-		this->grid[i].drawBlock(i);
-	}
+	for(int j = 0; j<this->grid.size(); ++j)
+		for(int i = 0; i<this->grid.size(); ++i)
+			this->grid[i][j].drawBlock(i,j);
 }
