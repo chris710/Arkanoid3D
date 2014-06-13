@@ -3,6 +3,7 @@
 //plik nag³ówkowy klasy bloczka
 #include"Loader.h"
 
+using namespace glm;
 
 class Block {
 private:
@@ -19,9 +20,10 @@ private:
 
 public:
 	//TODO konstruktor i destruktor
+	mat4 Macierz;
 	Block(float x, float y);
 
-	void drawBlock();
+	void drawBlock(int i);
 
 	int getX() {
 		return this->X;

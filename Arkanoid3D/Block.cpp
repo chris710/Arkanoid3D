@@ -9,11 +9,10 @@ Block::Block(float x, float y) {
 		this->destroyed = false;
 		Loader newLoader;
 		newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);
-		
+				
 }
 
-void Block::drawBlock() {
-	//glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+void Block::drawBlock(int i) {
 
 ////    ŒWIAT£O
 	GLenum id = GL_LIGHT0;		
@@ -43,6 +42,21 @@ void Block::drawBlock() {
 		//b³¹d
 	}
 
+// PRZESUNIÊCIE
+	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
+	vec3(0.0f,0.0f,30.0f),									//gdzie
+	vec3(0.0f,-5.0f,0.0f),									//kierunek
+	vec3(0.0f,1.0f,0.0f));	
+	this->Macierz = mat4(1.0f);
+	float k = (-11) + 2*(float)i;
+	this->Macierz = glm::translate(this->Macierz, glm::vec3(k,5.0f,0.0f));
+	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
+
+// ³adowanie macierzy do modelu
+	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
+	glLoadMatrixf(value_ptr(P));
+	glMatrixMode(GL_MODELVIEW);		//macierz modelu
+	glLoadMatrixf(value_ptr(V*(this->Macierz)));
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -51,7 +65,6 @@ void Block::drawBlock() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,tex);
 
-	
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnableClientState( GL_NORMAL_ARRAY );   
 	glEnableClientState( GL_VERTEX_ARRAY );
@@ -70,13 +83,10 @@ void Block::drawBlock() {
 	glVertexPointer( 3, GL_FLOAT, 0, &(this->vertices.at(0)));
 	glNormalPointer( GL_FLOAT, 0, &(this->normals.at(0)));
 	glTexCoordPointer( 2, GL_FLOAT, 0, &(this->uvs.at(0)));
-//	glColor3d(0.4f,0.4f,0.4f);
 	glDrawArrays( GL_TRIANGLES, 0, this->vertices.size());
 	
 	glDisableClientState( GL_VERTEX_ARRAY );
 	glDisableClientState( GL_NORMAL_ARRAY );
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	//mat4 M = mat4(1.0f);
-	//M=glm::translate(M, glm::vec3(60.0f,60.0f,2.0f));
 }
