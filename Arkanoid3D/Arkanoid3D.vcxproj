@@ -65,10 +65,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BlueBlock.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="main_file.cpp" />
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="RedBlock.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SilverBlock.cpp" />
@@ -76,11 +78,13 @@
     <ClCompile Include="tga.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlueBlock.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="main_file.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="RedBlock.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SilverBlock.h" />

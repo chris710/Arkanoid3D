@@ -1,18 +1,15 @@
-#include "Block.h"
-//plik Ÿród³a klasy bloczka
+#include "Paddle.h"
+//plik Ÿród³a klasy paletki
 
 
-Block::Block(float x, float y) {
-		this->X = x;
-		this->Y = y;
-		this->health = 1;
-		this->destroyed = false;
+Paddle::Paddle() {
+		this->X = 0.0f;
 		Loader newLoader;
-		newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);
+		newLoader.load("res/paletka.obj",this->vertices,this->uvs,this->normals);
 				
 }
 
-void Block::drawBlock(int i, int j) {
+void Paddle::drawPaddle() {
 
 ////    ŒWIAT£O
 	GLenum id = GL_LIGHT0;		
@@ -27,7 +24,7 @@ void Block::drawBlock(int i, int j) {
     glLightfv( id, GL_POSITION, position );
 
 //// TEKSTURY	
-	if (img.Load("res/bloczek.tga")==IMG_OK) {
+	if (img.Load("res/paletka.tga")==IMG_OK) {
 		glGenTextures(1,&tex); //Zainicjuj uchwyt tex
 		glBindTexture(GL_TEXTURE_2D,tex); //Przetwarzaj uchwyt tex
 	if (img.GetBPP()==24) //Obrazek 24bit
@@ -48,9 +45,7 @@ void Block::drawBlock(int i, int j) {
 	vec3(0.0f,-5.0f,0.0f),									//kierunek
 	vec3(0.0f,1.0f,0.0f));	
 	this->Macierz = mat4(1.0f);
-	float k = (-11.0f) + 2.02*(float)i;
-	float l = ( 5.0f ) - 0.802*(float)j;
-	this->Macierz = glm::translate(this->Macierz, glm::vec3(k, l, 0.0f));
+	this->Macierz = glm::translate(this->Macierz, glm::vec3(this->getX(), -10.0f, 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 
 // ³adowanie macierzy do modelu
@@ -91,3 +86,4 @@ void Block::drawBlock(int i, int j) {
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 }
+;

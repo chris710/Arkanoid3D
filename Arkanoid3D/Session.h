@@ -3,6 +3,7 @@
 //plik nag³ówkowy klasy, dotycz¹cej aktualnej rozgrywki
 
 #include "Block.h"
+#include "Paddle.h"
 
 #include<vector>
 
@@ -12,6 +13,8 @@ class Session {
 
 public:
 	vector <vector<Block>> grid;		//macierz bloczków
+	Paddle *Paletka;
+
 	Session();
 
 	//sprawdza, czy s¹ jeszcze klocki
@@ -22,6 +25,9 @@ public:
 
 	//funkcja tworz¹ca rzêdy bloczków
 	void createBlocks();
+
+	//funkcja tworz¹ca paletkê
+	void createPaddle();
 
 	//funkcja tworz¹ca pomieszczenie z gr¹
 	void createRoom();
