@@ -4,6 +4,7 @@
 
 #include "Block.h"
 #include "Paddle.h"
+#include "Ball.h"
 
 #include<vector>
 
@@ -14,6 +15,7 @@ class Session {
 public:
 	vector <vector<Block>> grid;		//macierz bloczków
 	Paddle *Paletka;
+	Ball *Kulka;
 
 	Session();
 
@@ -28,6 +30,9 @@ public:
 
 	//funkcja tworz¹ca paletkê
 	void createPaddle();
+
+	//funkcja tworz¹ca kulkê
+	void createBall();
 
 	//funkcja tworz¹ca pomieszczenie z gr¹
 	void createRoom();

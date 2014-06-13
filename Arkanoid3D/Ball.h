@@ -19,11 +19,11 @@ public:
 	Ball();
 	void drawBall();
 
-	int getX() {
+	float getX() {
 		return this->X;
 	}
 
-	int getY() {
+	float getY() {
 		return this->Y;
 	}
 };

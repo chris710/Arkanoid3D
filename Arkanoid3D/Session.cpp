@@ -5,6 +5,7 @@
 Session::Session(){
 	createBlocks();
 	createPaddle();
+	createBall();
 }
 
 
@@ -36,6 +37,10 @@ void Session::createPaddle() {
 	this->Paletka = new Paddle();
 }
 
+void Session::createBall(){
+	this->Kulka = new Ball();
+}
+
 void Session::createRoom() {
 	//glColor3d(1.0f,1.0f,1.0f);  //kolorujemy kwadrat
 	//glutSolidCube(3.5f);		//stwórz wielki bia³y szeœcian
@@ -48,5 +53,6 @@ void Session::drawAll() {
 		for(int i = 0; i<this->grid.size(); ++i)
 			this->grid[i][j].drawBlock(i,j);
 	this->Paletka->drawPaddle();
+	this->Kulka->drawBall();
 	
 }

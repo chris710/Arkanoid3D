@@ -25,11 +25,11 @@ public:
 
 	void drawBlock(int i, int j);
 
-	int getX() {
+	float getX() {
 		return this->X;
 	}
 
-	int getY() {
+	float getY() {
 		return this->Y;
 	}
 
@@ -37,7 +37,7 @@ public:
 		return this->health;
 	}
 
-	int isDestroyed() {
+	bool isDestroyed() {
 		return this->destroyed;
 	}
 	/***** 

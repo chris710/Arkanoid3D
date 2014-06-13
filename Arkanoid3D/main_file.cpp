@@ -35,8 +35,6 @@ int main(int argc, char* argv[]) {
 	initialize();
 
 	glutMainLoop();
-
-//	glDeleteTextures(1,&tex);
 	return 0;
 }
 
