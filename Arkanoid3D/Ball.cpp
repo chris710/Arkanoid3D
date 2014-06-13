@@ -1,4 +1,4 @@
 #include "Ball.h"
-//plik Ÿród³a klasy pi³ki
+//plik Ÿród³a klasy kulki
 
 ;
