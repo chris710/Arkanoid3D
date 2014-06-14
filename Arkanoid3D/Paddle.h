@@ -7,13 +7,14 @@ using namespace glm;
 
 class Paddle {
 private:
-	float X;	//pozycja X paletki
+
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> uvs;
 	vector<glm::vec3> normals;
 	GLuint tex;				
 	TGAImg img;	
 public:
+	float X;	//pozycja X paletki
 	mat4 Macierz;
 	Paddle();
 	void drawPaddle();

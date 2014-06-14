@@ -1,17 +1,16 @@
 #include"main_file.h"
 
-float speed=60;							//360 stopni/s
 int lastTime=0;
 int interval;							//czas pomiêdzy klatkami
 int fps = 0;							//ile fpsów
-float angle = 0;
+float newX = 0;
 int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
 void displayFrame(void) {											//Tutaj kod rysuj¹cy		
 	glClearColor(1,1,1,0);											//czyszczenie okna do koloru
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				//czyszczenie buforów  //w³aœciwe czyszcenie okna
-	
+	NewSession->Paletka->X += newX;
 	NewSession->drawAll();											//wyœwietla ca³oœæ
 	
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
@@ -24,7 +23,7 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-//	angle+=speed*interval/1000.0;
+
 //	if (angle>360) angle-=360;
 
 	glutPostRedisplay();
@@ -32,20 +31,20 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 
 void keyDown(int c, int x, int y) {
  if (c==GLUT_KEY_LEFT) {
-	speed=-120;
+	newX = -0.2;
  }
  if (c==GLUT_KEY_RIGHT) {
-	 speed=120;
+	 newX = 0.2;
  }
    glutPostRedisplay();
 }
 
 void keyUp(int c, int x, int y) {
  if (c==GLUT_KEY_LEFT) {
-	speed=120;
+	 newX = 0;	
  }
  if (c==GLUT_KEY_RIGHT) {
-	//speed=-120;
+	 newX = 0;	
  }
  glutPostRedisplay();
 }
