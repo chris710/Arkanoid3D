@@ -10,7 +10,7 @@ Session *NewSession = new Session();
 void displayFrame(void) {											//Tutaj kod rysuj¹cy		
 	glClearColor(1,1,1,0);											//czyszczenie okna do koloru
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				//czyszczenie buforów  //w³aœciwe czyszcenie okna
-	NewSession->Paletka->X += newX;
+
 	NewSession->drawAll();											//wyœwietla ca³oœæ
 	
 	glutSwapBuffers();  //wywala zawartoœæ bufora ZAWSZE NA KOÑCU!!!
@@ -23,18 +23,23 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-
-//	if (angle>360) angle-=360;
+	NewSession->Paletka->X += newX;
 
 	glutPostRedisplay();
 }
 
 void keyDown(int c, int x, int y) {
  if (c==GLUT_KEY_LEFT) {
-	newX = -0.2;
+	if (NewSession->Paletka->getX() > -10.0)
+		newX = -0.2;
+	else
+		 newX = 0;
  }
  if (c==GLUT_KEY_RIGHT) {
-	 newX = 0.2;
+	 if (NewSession->Paletka->getX() < 10.0)
+		newX = 0.2;
+	 else
+		 newX = 0;
  }
    glutPostRedisplay();
 }
