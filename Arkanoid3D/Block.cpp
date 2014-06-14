@@ -2,48 +2,49 @@
 //plik Ÿród³a klasy bloczka
 
 
-Block::Block(float x, float y) {
+Block::Block(float x, float y, GLuint tex) {
 	this->X = x;
 	this->Y = y;
 	this->health = 1;
 	this->destroyed = false;
 	Loader newLoader;
 	newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);
-			
+	this->tex = tex;	
+	
 }
 
 void Block::drawBlock(int i, int j) {
-GLuint tex;				//Globalnie do tekstury				//Obojêtnie czy globalnie, czy lokalnie do tektury ////    ŒWIAT£O
-	GLenum id = GL_LIGHT0;		
-    GLfloat position[ 4 ] = { 0.0f, 10.0f, 10.0f, 1.0f };
-    GLfloat ambient[ 4 ] = { 0.0f, 0.0f, 0.0f, 1.0f };
-    GLfloat diffuse[ 4 ] ={ 0.8f, 0.8f, 0.8f, 1.0f }; 
-    GLfloat specular[ 4 ] = { 0.8f, 0.8f, 0.8f, 1.0f }; 
-    glEnable( id );
-    glLightfv( id, GL_AMBIENT, ambient );
-    glLightfv( id, GL_DIFFUSE, diffuse );
-    glLightfv( id, GL_SPECULAR, specular );
-    glLightfv( id, GL_POSITION, position );
-		
 
-// PRZESUNIÊCIE
-	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,30.0f),									//gdzie
-	vec3(0.0f,-5.0f,0.0f),									//kierunek
-	vec3(0.0f,1.0f,0.0f));	
+/**
+*	TODO zakomentowaæ ten burdel
+**/
+
+	glEnable(GL_TEXTURE_2D);	
+	glBindTexture(GL_TEXTURE_2D,this->tex); //Przetwarzaj uchwyt tex
+
+	// PRZESUNIÊCIE
+	/**
+	*	TODO wywaliæ P i V do globala jakiegoœ, aby by³o w jednym miejscu 
+	**/
 	this->Macierz = mat4(1.0f);
 	float k = (-11.0f) + 2.02*(float)i;
 	float l = ( 5.0f ) - 0.802*(float)j;
 	this->Macierz = glm::translate(this->Macierz, glm::vec3(k, l, 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 
-// ³adowanie macierzy do modelu
+	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
+	vec3(0.0f,0.0f,30.0f),									//gdzie
+	vec3(0.0f,-5.0f,0.0f),									//kierunek
+	vec3(0.0f,1.0f,0.0f));	
+
+	// ³adowanie macierzy do modelu
 	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*(this->Macierz)));
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+									//czary mary z teksturami
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	
@@ -51,6 +52,9 @@ GLuint tex;				//Globalnie do tekstury				//Obojêtnie czy globalnie, czy lokalni
 	glEnableClientState( GL_NORMAL_ARRAY );   
 	glEnableClientState( GL_VERTEX_ARRAY );
 
+	/**
+	*	TODO to musi byæ tutaj?
+	**/
 	GLfloat ambient_col[ 4 ] =  { 0.0f, 0.0f, 0.0f, 1.0f };	//materia³
 	GLfloat diffuse_col[ 4 ] = { 1.0f, 0.0f, 0.0f, 1.0f };
 	GLfloat specular_col[ 4 ] = { 0.2f, 0.2f, 0.2f, 1.0f };
@@ -70,4 +74,7 @@ GLuint tex;				//Globalnie do tekstury				//Obojêtnie czy globalnie, czy lokalni
 	glDisableClientState( GL_VERTEX_ARRAY );
 	glDisableClientState( GL_NORMAL_ARRAY );
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	//glBindTexture(GL_TEXTURE_2D,0);	//koniec bindowania tekstury	//TODO wywaliæ do clear
+	glDisable(GL_TEXTURE_2D);
 }

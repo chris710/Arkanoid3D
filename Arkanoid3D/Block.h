@@ -11,14 +11,15 @@ private:
 	float Y;	//pozycja Y bloczka
 	int health;	//ile uderzeñ zosta³o do zniszczenia bloczka
 	bool destroyed;	//czy zosta³ zniszczony
-	//TODO model i tekstura
+
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> uvs;
 	vector<glm::vec3> normals;
+	GLuint tex;	
 public:
-	//TODO konstruktor i destruktor
-	mat4 Macierz;
-	Block(float x, float y);
+	mat4 Macierz;		//macierz jednostkowa
+	Block(float x, float y, GLuint tex);	//konstruktor
+	//TODO destruktor
 
 	void drawBlock(int i, int j);
 

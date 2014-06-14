@@ -14,14 +14,13 @@ using namespace std;
 class Session { 
 
 private:
-	GLuint tex;				
-	TGAImg img;	
 public:
 	vector <vector<Block>> grid;		//macierz bloczków
 	Paddle *Paletka;
 	Ball *Kulka;
 	Room *Pokoj;
-
+	GLuint blockTex;					//uchwyt na teksturê bloczka			
+	TGAImg blockImg;					//obraz z tekstur¹ bloczka
 
 	Session();
 
@@ -45,6 +44,9 @@ public:
 
 	//funckja rysuj¹ca
 	void drawAll();
+
+	//czyszczenie syfu		//TODO
+	void clean();
 };
 
 #endif //SESSION_H

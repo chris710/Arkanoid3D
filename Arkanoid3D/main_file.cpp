@@ -8,6 +8,10 @@ float newX = 0;
 int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
+
+
+
+
 void displayFrame(void) {											//Tutaj kod rysuj¹cy		
 	glClearColor(1,1,1,0);											//czyszczenie okna do koloru
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				//czyszczenie buforów  //w³aœciwe czyszcenie okna
@@ -24,9 +28,9 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-	if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
+	/*if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
 		NewSession->Paletka->X += newX;
-
+	*/					//TODO to ma byæ funkcja!!!
 	glutPostRedisplay();
 }
 
@@ -71,10 +75,26 @@ void initialize() {
 	//tutaj kod inicjuj¹cy					//TODO to te¿	
 	glEnable(GL_DEPTH_TEST);				//w³¹czanie zbuffora
 	glEnable(GL_LIGHTING);					//w³¹czamy oœwietlenie
-
-
+	//    ŒWIAT£O	 TODO wywaliæ do main_file
+	GLenum id = GL_LIGHT0;		
+    GLfloat position[ 4 ] = { 0.0f, 10.0f, 10.0f, 1.0f };
+    GLfloat ambient[ 4 ] = { 0.0f, 0.0f, 0.0f, 1.0f };
+    GLfloat diffuse[ 4 ] ={ 0.8f, 0.8f, 0.8f, 1.0f }; 
+    GLfloat specular[ 4 ] = { 0.8f, 0.8f, 0.8f, 1.0f }; 
+	glLightfv( id, GL_AMBIENT, ambient );
+    glLightfv( id, GL_DIFFUSE, diffuse );
+    glLightfv( id, GL_SPECULAR, specular );
+    glLightfv( id, GL_POSITION, position );
+    glEnable( id );
 	glEnable(GL_COLOR_MATERIAL);			//kolorek po oœwietleniu
 	glShadeModel(GL_SMOOTH);
+
+
+	
+    
+
+
+	
 }
 
 
