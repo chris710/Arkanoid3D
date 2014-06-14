@@ -29,9 +29,9 @@ void nextFrame(void) {									//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-	/*if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
+	if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
 		NewSession->Paletka->X += newX;
-	*/					//TODO to ma byæ funkcja!!!
+						//TODO to ma byæ funkcja!!!
 	glutPostRedisplay();
 }
 
@@ -93,9 +93,9 @@ void initialize() {
 	}} 
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	
 
 	//    ŒWIAT£O	 TODO wywaliæ do main_file
 	GLenum id = GL_LIGHT0;		

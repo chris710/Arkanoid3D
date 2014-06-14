@@ -6,6 +6,7 @@ Ball::Ball() {
 		this->Y = -10.0f;
 		Loader newLoader;
 		newLoader.load("res/kulka.obj",this->vertices,this->uvs,this->normals);				
+
 }
 
 void Ball::drawBall() {
@@ -22,21 +23,7 @@ void Ball::drawBall() {
     glLightfv( id, GL_SPECULAR, specular );
     glLightfv( id, GL_POSITION, position );
 
-//// TEKSTURY	
-	if (img.Load("res/kulka.tga")==IMG_OK) {
-		glGenTextures(1,&tex); //Zainicjuj uchwyt tex
-		glBindTexture(GL_TEXTURE_2D,tex); //Przetwarzaj uchwyt tex
-	if (img.GetBPP()==24) //Obrazek 24bit
-		glTexImage2D(GL_TEXTURE_2D,0,3,img.GetWidth(),img.GetHeight(),0,
-		GL_RGB,GL_UNSIGNED_BYTE,img.GetImg());
-	else if (img.GetBPP()==32) //Obrazek 32bit
-		glTexImage2D(GL_TEXTURE_2D,0,4,img.GetWidth(),img.GetHeight(),0,
-		GL_RGBA,GL_UNSIGNED_BYTE,img.GetImg());
-	else {
-		//Obrazek 16 albo 8 bit, takimi siê nie przejmujemy
-	}} else {
-		//b³¹d
-	}
+
 
 // PRZESUNIÊCIE
 	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
@@ -47,18 +34,33 @@ void Ball::drawBall() {
 	this->Macierz = glm::translate(this->Macierz, glm::vec3(this->getX(), this->getY(), 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 
+	//// TEKSTURY	
+	if (this->img.Load("res/kulka.tga")==IMG_OK) {
+		glGenTextures(1,&this->tex); //Zainicjuj uchwyt tex
+		glBindTexture(GL_TEXTURE_2D,this->tex); //Przetwarzaj uchwyt tex
+	if (this->img.GetBPP()==24) //Obrazek 24bit
+		glTexImage2D(GL_TEXTURE_2D,0,3,this->img.GetWidth(),this->img.GetHeight(),0,
+		GL_RGB,GL_UNSIGNED_BYTE,this->img.GetImg());
+	else if (this->img.GetBPP()==32) //Obrazek 32bit
+		glTexImage2D(GL_TEXTURE_2D,0,4,this->img.GetWidth(),this->img.GetHeight(),0,
+		GL_RGBA,GL_UNSIGNED_BYTE,this->img.GetImg());
+	else {
+		//Obrazek 16 albo 8 bit, takimi siê nie przejmujemy
+	}} else {
+		//b³¹d
+	}
 // ³adowanie macierzy do modelu
 	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*(this->Macierz)));
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D,tex);
+	glBindTexture(GL_TEXTURE_2D,this->tex);
 
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnableClientState( GL_NORMAL_ARRAY );   

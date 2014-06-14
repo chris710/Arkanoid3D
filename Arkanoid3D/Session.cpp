@@ -3,10 +3,10 @@
 
 
 Session::Session(){
-	//createRoom();
+	createRoom();
 	createBlocks();
-	//createPaddle();
-	//createBall();
+	createPaddle();
+	createBall();
 }
 
 
@@ -48,7 +48,7 @@ void Session::createRoom() {
 
 
 void Session::drawAll() {	
-	//this->Pokoj->drawRoom();
+	this->Pokoj->drawRoom();
 	
 	for(int j = 0; j<this->grid.size(); ++j)
 		for(int i = 0; i<this->grid.size(); ++i)
@@ -56,7 +56,7 @@ void Session::drawAll() {
 
 	//glDeleteTextures(1,&tex);		//TODO wywaliæ do clean
 
-	//this->Paletka->drawPaddle();
-	//this->Kulka->drawBall();
+	this->Paletka->drawPaddle();
+	this->Kulka->drawBall();
 	
 }
