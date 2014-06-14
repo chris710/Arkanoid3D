@@ -29,6 +29,11 @@ void Block::drawBlock(int i, int j) {
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*(this->Macierz)));
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	
 	
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnableClientState( GL_NORMAL_ARRAY );   

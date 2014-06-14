@@ -9,8 +9,7 @@ int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
 
-GLuint blockTex;					//uchwyt na teksturê bloczka			
-TGAImg blockImg;					//obraz z tekstur¹ bloczka
+
 
 
 
@@ -78,26 +77,7 @@ void initialize() {
 	//tutaj kod inicjuj¹cy					//TODO to te¿	
 	glEnable(GL_DEPTH_TEST);				//w³¹czanie zbuffora
 	glEnable(GL_LIGHTING);					//w³¹czamy oœwietlenie
-			// TEKSTURY	
-	
-	glEnable(GL_TEXTURE_2D);	
-	if (blockImg.Load("res/bloczek.tga")==IMG_OK){
-		glGenTextures(1,&(blockTex)); //Zainicjuj uchwyt tex
-		glBindTexture(GL_TEXTURE_2D,blockTex); //Przetwarzaj uchwyt tex
-	if (blockImg.GetBPP()==24) //Obrazek 24bit
-		glTexImage2D(GL_TEXTURE_2D,0,3,blockImg.GetWidth(),blockImg.GetHeight(),0,
-		GL_RGB,GL_UNSIGNED_BYTE,blockImg.GetImg());
-	else if (blockImg.GetBPP()==32) //Obrazek 32bit
-		glTexImage2D(GL_TEXTURE_2D,0,4,blockImg.GetWidth(),blockImg.GetHeight(),0,
-		GL_RGBA,GL_UNSIGNED_BYTE,blockImg.GetImg());
-	else {
-		//Obrazek 16 albo 8 bit, takimi siê nie przejmujemy
-	}} 
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	
 
 	//    ŒWIAT£O	 TODO wywaliæ do main_file
 	GLenum id = GL_LIGHT0;		
