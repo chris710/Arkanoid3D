@@ -30,10 +30,31 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	glutPostRedisplay();
 }
 
+void keyDown(int c, int x, int y) {
+ if (c==GLUT_KEY_LEFT) {
+	speed=-120;
+ }
+ if (c==GLUT_KEY_RIGHT) {
+	 speed=120;
+ }
+   glutPostRedisplay();
+}
+
+void keyUp(int c, int x, int y) {
+ if (c==GLUT_KEY_LEFT) {
+	speed=120;
+ }
+ if (c==GLUT_KEY_RIGHT) {
+	//speed=-120;
+ }
+ glutPostRedisplay();
+}
+
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	initialize();
-
+	glutSpecialFunc(keyDown);
+	glutSpecialUpFunc(keyUp);
 	glutMainLoop();
 	return 0;
 }
