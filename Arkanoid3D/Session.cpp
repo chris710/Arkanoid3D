@@ -3,6 +3,7 @@
 
 
 Session::Session(){
+	createRoom();
 	createBlocks();
 	createPaddle();
 	createBall();
@@ -42,14 +43,12 @@ void Session::createBall(){
 }
 
 void Session::createRoom() {
-	//glColor3d(1.0f,1.0f,1.0f);  //kolorujemy kwadrat
-	//glutSolidCube(3.5f);		//stwórz wielki bia³y szeœcian
+	this->Pokoj = new Room();
 }
 
 
-
-void Session::drawAll() {
-	
+void Session::drawAll() {	
+	this->Pokoj->drawRoom();
 	//// TEKSTURY
 	glEnable(GL_TEXTURE_2D);	
 	if (img.Load("res/bloczek.tga")==IMG_OK){

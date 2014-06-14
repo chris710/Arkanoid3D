@@ -72,6 +72,7 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="RedBlock.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SilverBlock.cpp" />
     <ClCompile Include="sterowanie.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="main_file.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="RedBlock.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SilverBlock.h" />
     <ClInclude Include="sterowanie.h" />

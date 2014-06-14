@@ -5,6 +5,7 @@
 #include "Block.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "Room.h"
 
 #include<vector>
 
@@ -13,13 +14,14 @@ using namespace std;
 class Session { 
 
 private:
-
+	GLuint tex;				
+	TGAImg img;	
 public:
 	vector <vector<Block>> grid;		//macierz bloczków
 	Paddle *Paletka;
 	Ball *Kulka;
-	GLuint tex;				
-	TGAImg img;	
+	Room *Pokoj;
+
 
 	Session();
 
