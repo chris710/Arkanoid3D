@@ -4,7 +4,10 @@
 int lastTime=0;
 int interval;							//czas pomiêdzy klatkami
 int fps = 0;							//ile fpsów
-float newX = 0;
+float newX = 0;							//zmiana po³o¿enia paletki
+float BallX = 0;						//po³o¿enie X pi³ki
+float BallY = -0.003;						//po³o¿enie Y pi³ki
+const float PADDLE_SPEED = 0.01;				//prêdkoœæ paletki
 int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
@@ -31,17 +34,29 @@ void nextFrame(void) {									//to co robi siê pomiêdzy klatkami
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
 	if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
-		NewSession->Paletka->X += newX;
+		NewSession->Paletka->setX(NewSession->Paletka->getX() + newX*interval);
 						//TODO to ma byæ funkcja!!!
+	switch(NewSession->collision()) {
+	case 0:
+		NewSession->Kulka->setX(NewSession->Kulka->getX() + BallX*interval);
+		NewSession->Kulka->setY(NewSession->Kulka->getY() + BallY*interval);
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	default:
+		break;
+	}
 	glutPostRedisplay();
 }
 
 void keyDown(int c, int x, int y) {
  if (c==GLUT_KEY_LEFT) {
-	newX = -0.1;
+	newX = -PADDLE_SPEED;
 }
  if (c==GLUT_KEY_RIGHT) {
-	newX = 0.1;
+	 newX = PADDLE_SPEED;
  }
    glutPostRedisplay();
 }

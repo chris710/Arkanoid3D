@@ -45,6 +45,9 @@ public:
 	//funckja rysuj¹ca
 	void drawAll();
 
+	//kolizje pi³ki
+	int collision();
+
 	//czyszczenie syfu		//TODO
 	void clean();
 };

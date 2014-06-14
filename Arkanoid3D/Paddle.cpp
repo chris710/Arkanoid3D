@@ -9,6 +9,15 @@ Paddle::Paddle() {
 				
 }
 
+
+float Paddle::getX() {
+	return this->X;
+}
+
+void Paddle::setX(float x) {
+	this->X = x;
+}
+
 void Paddle::drawPaddle() {
 
 ////    ŒWIAT£O

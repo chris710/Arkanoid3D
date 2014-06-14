@@ -19,12 +19,12 @@ public:
 	Ball();
 	void drawBall();
 
-	float getX() {
-		return this->X;
-	}
+	float getX(); 
 
-	float getY() {
-		return this->Y;
-	}
+	float getY();
+
+	void setX(float x);
+
+	void setY(float y);
 };
 #endif //BALL_H

@@ -44,6 +44,10 @@ void Session::createRoom() {
 	this->Pokoj = new Room();
 }
 
+int Session::collision() {
+	return 0;
+}
+
 
 void Session::drawAll() {	
 	this->Pokoj->drawRoom();	

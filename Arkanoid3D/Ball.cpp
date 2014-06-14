@@ -10,6 +10,22 @@ Ball::Ball() {
 
 }
 
+float Ball::getX() {
+	return this->X;
+}
+
+float Ball::getY() {
+	return this->Y;
+}
+
+void Ball::setX(float x) {
+	this->X = x;
+}
+
+void Ball::setY(float y) {
+	this->Y = y;
+}
+
 void Ball::drawBall() {
 
 ////    ŒWIAT£O

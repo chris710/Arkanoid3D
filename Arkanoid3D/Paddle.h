@@ -13,14 +13,13 @@ private:
 	vector<glm::vec3> normals;
 	GLuint tex;				
 	TGAImg img;	
-public:
 	float X;	//pozycja X paletki
+public:
 	mat4 Macierz;
 	Paddle();
 	void drawPaddle();
 
-	float getX() {
-		return this->X;
-	}
+	void setX(float x);
+	float getX();
 };
 #endif //PADDLE_H
