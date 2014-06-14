@@ -19,8 +19,6 @@ public:
 	Paddle *Paletka;
 	Ball *Kulka;
 	Room *Pokoj;
-	GLuint blockTex;					//uchwyt na teksturê bloczka			
-	TGAImg blockImg;					//obraz z tekstur¹ bloczka
 
 	Session();
 

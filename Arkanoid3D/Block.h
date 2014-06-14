@@ -16,9 +16,10 @@ private:
 	vector<glm::vec2> uvs;
 	vector<glm::vec3> normals;
 	GLuint tex;	
+	TGAImg img;					//obraz z tekstur¹ bloczka
 public:
 	mat4 Macierz;		//macierz jednostkowa
-	Block(float x, float y, GLuint tex);	//konstruktor
+	Block(float x, float y);	//konstruktor
 	//TODO destruktor
 
 	void drawBlock(int i, int j);
