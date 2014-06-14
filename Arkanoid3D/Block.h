@@ -15,9 +15,6 @@ private:
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> uvs;
 	vector<glm::vec3> normals;
-	GLuint tex;				//Globalnie do tekstury
-	TGAImg img;				//Obojêtnie czy globalnie, czy lokalnie do tektury 
-
 public:
 	//TODO konstruktor i destruktor
 	mat4 Macierz;

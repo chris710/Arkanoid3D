@@ -1,5 +1,6 @@
 #include"main_file.h"
 
+
 int lastTime=0;
 int interval;							//czas pomiêdzy klatkami
 int fps = 0;							//ile fpsów
@@ -23,23 +24,18 @@ void nextFrame(void) {//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-	NewSession->Paletka->X += newX;
+	if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
+		NewSession->Paletka->X += newX;
 
 	glutPostRedisplay();
 }
 
 void keyDown(int c, int x, int y) {
  if (c==GLUT_KEY_LEFT) {
-	if (NewSession->Paletka->getX() > -10.0)
-		newX = -0.2;
-	else
-		 newX = 0;
- }
+	newX = -0.1;
+}
  if (c==GLUT_KEY_RIGHT) {
-	 if (NewSession->Paletka->getX() < 10.0)
-		newX = 0.2;
-	 else
-		 newX = 0;
+	newX = 0.1;
  }
    glutPostRedisplay();
 }

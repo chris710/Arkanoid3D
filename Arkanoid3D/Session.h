@@ -12,10 +12,14 @@ using namespace std;
 //stan bloczków i stan gry
 class Session { 
 
+private:
+
 public:
 	vector <vector<Block>> grid;		//macierz bloczków
 	Paddle *Paletka;
 	Ball *Kulka;
+	GLuint tex;				
+	TGAImg img;	
 
 	Session();
 
