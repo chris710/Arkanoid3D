@@ -11,13 +11,12 @@ private:
 	float Y;	//pozycja Y bloczka
 	int health;	//ile uderzeñ zosta³o do zniszczenia bloczka
 	bool destroyed;	//czy zosta³ zniszczony
-
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> uvs;
 	vector<glm::vec3> normals;
-	GLuint tex;	
+
 public:
-	mat4 Macierz;		//macierz jednostkowa
+	mat4 Macierz;				//macierz jednostkowa
 	Block(float x, float y);	//konstruktor
 	//TODO destruktor
 
@@ -38,6 +37,7 @@ public:
 	bool isDestroyed() {
 		return this->destroyed;
 	}
+
 	/***** 
 	* TODO metody:
 	*	- efekt zbicia bloczka
@@ -45,6 +45,7 @@ public:
 	*	- rysowanie bloczka 
 	*	- uszkodzenie bloczka
 	*****/
+
 	void damage() {
 		if(this->health != 0) {
 			this->health--;

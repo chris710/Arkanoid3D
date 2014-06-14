@@ -2,7 +2,7 @@
 //plik Ÿród³a klasy pokoj
 Room::Room() {
 		Loader newLoader;
-		newLoader.load("res/pokoj1.obj",this->vertices,this->uvs,this->normals);
+		newLoader.load("res/pokoj.obj",this->vertices,this->uvs,this->normals);
 				
 }
 
@@ -38,7 +38,7 @@ void Room::drawRoom() {
 
 // PRZESUNIÊCIE
 	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,30.0f),									//gdzie
+	vec3(0.0f,0.0f,31.0f),									//gdzie
 	vec3(0.0f,-5.0f,0.0f),									//kierunek
 	vec3(0.0f,1.0f,0.0f));	
 	this->Macierz = mat4(1.0f);
@@ -50,7 +50,8 @@ void Room::drawRoom() {
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*(this->Macierz)));
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

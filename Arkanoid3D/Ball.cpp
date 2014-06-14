@@ -1,4 +1,5 @@
 #include "Ball.h"
+
 //plik Ÿród³a klasy kulki
 
 Ball::Ball() {
@@ -26,13 +27,13 @@ void Ball::drawBall() {
 
 
 // PRZESUNIÊCIE
-	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,30.0f),									//gdzie
-	vec3(0.0f,-5.0f,0.0f),									//kierunek
-	vec3(0.0f,1.0f,0.0f));	
 	this->Macierz = mat4(1.0f);
 	this->Macierz = glm::translate(this->Macierz, glm::vec3(this->getX(), this->getY(), 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
+	mat4 V = lookAt(											//wspó³rzêdne kamery	//kamera jest sta³a!
+	vec3(0.0f,0.0f,31.0f),									//gdzie
+	vec3(0.0f,-5.0f,0.0f),									//kierunek
+	vec3(0.0f,1.0f,0.0f));	
 
 	//// TEKSTURY	
 	if (this->img.Load("res/kulka.tga")==IMG_OK) {
@@ -54,7 +55,8 @@ void Ball::drawBall() {
 	glLoadMatrixf(value_ptr(P));
 	glMatrixMode(GL_MODELVIEW);		//macierz modelu
 	glLoadMatrixf(value_ptr(V*(this->Macierz)));
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

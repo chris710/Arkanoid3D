@@ -1,14 +1,12 @@
 #include "Session.h"
 //plik Ÿród³a klasy sesji 
 
-
 Session::Session(){
 	createRoom();
 	createBlocks();
 	createPaddle();
 	createBall();
 }
-
 
 bool Session::win() {
 	if(this->grid.empty()) {
@@ -48,14 +46,10 @@ void Session::createRoom() {
 
 
 void Session::drawAll() {	
-	this->Pokoj->drawRoom();
-	
+	this->Pokoj->drawRoom();	
 	for(int j = 0; j<this->grid.size(); ++j)
 		for(int i = 0; i<this->grid.size(); ++i)
 			this->grid[i][j].drawBlock(i,j);
-
-	//glDeleteTextures(1,&tex);		//TODO wywaliæ do clean
-
 	this->Paletka->drawPaddle();
 	this->Kulka->drawBall();
 	

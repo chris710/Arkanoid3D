@@ -7,8 +7,10 @@ int fps = 0;							//ile fpsów
 float newX = 0;
 int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
-	GLuint blockTex;					//uchwyt na teksturê bloczka			
-	TGAImg blockImg;					//obraz z tekstur¹ bloczka
+
+
+GLuint blockTex;					//uchwyt na teksturê bloczka			
+TGAImg blockImg;					//obraz z tekstur¹ bloczka
 
 
 
@@ -93,7 +95,7 @@ void initialize() {
 	}} 
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	
 
