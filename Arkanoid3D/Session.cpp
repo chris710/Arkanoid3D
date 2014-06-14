@@ -45,6 +45,11 @@ void Session::createRoom() {
 }
 
 int Session::collision() {
+	if((this->Kulka->getY()+0.5)<=-14.5) {
+		if(1>=abs(this->Paletka->getX()+1-(this->Kulka->getX()+0.5))) {
+			return 1;
+		}
+	}
 	return 0;
 }
 
