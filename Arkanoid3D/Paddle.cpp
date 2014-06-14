@@ -41,11 +41,11 @@ void Paddle::drawPaddle() {
 
 // PRZESUNIÊCIE
 	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,31.0f),									//gdzie
-	vec3(0.0f,-5.0f,0.0f),									//kierunek
+	vec3(0.0f,-2.0f,31.0f),									//gdzie
+	vec3(0.0f,-3.0f,0.0f),									//kierunek
 	vec3(0.0f,1.0f,0.0f));	
 	this->Macierz = mat4(1.0f);
-	this->Macierz = glm::translate(this->Macierz, glm::vec3(this->getX(), -18.0f, 0.0f));
+	this->Macierz = glm::translate(this->Macierz, glm::vec3(this->getX(), -16.0f, 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 
 // ³adowanie macierzy do modelu

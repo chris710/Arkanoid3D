@@ -4,7 +4,7 @@
 
 Ball::Ball() {
 		this->X = 0.0f;
-		this->Y = -10.0f;
+		this->Y = -7.0f;
 		Loader newLoader;
 		newLoader.load("res/kulka.obj",this->vertices,this->uvs,this->normals);				
 
@@ -30,9 +30,9 @@ void Ball::drawBall() {
 	this->Macierz = mat4(1.0f);
 	this->Macierz = glm::translate(this->Macierz, glm::vec3(this->getX(), this->getY(), 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
-	mat4 V = lookAt(											//wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,31.0f),									//gdzie
-	vec3(0.0f,-5.0f,0.0f),									//kierunek
+	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
+	vec3(0.0f,-2.0f,31.0f),									//gdzie
+	vec3(0.0f,-3.0f,0.0f),									//kierunek
 	vec3(0.0f,1.0f,0.0f));	
 
 	//// TEKSTURY	

@@ -15,14 +15,14 @@ Block::Block(float x, float y) {
 void Block::drawBlock(int i, int j) {
 
 	this->Macierz = mat4(1.0f);
-	float k = (-11.0f) + 2.02*(float)i;
-	float l = ( 5.0f ) - 0.802*(float)j;
+	float k = (-11.1f) + 2.02*(float)i;
+	float l = ( 7.5f ) - 0.802*(float)j;
 	this->Macierz = glm::translate(this->Macierz, glm::vec3(k, l, 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
-	mat4 V = lookAt(											//wspó³rzêdne kamery	//kamera jest sta³a!
-	vec3(0.0f,0.0f,31.0f),									//gdzie
-	vec3(0.0f,-5.0f,0.0f),									//kierunek
-	vec3(0.0f,1.0f,0.0f));	
+	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!
+	vec3(0.0f,-2.0f,31.0f),									//gdzie
+	vec3(0.0f,-3.0f,0.0f),									//kierunek
+	vec3(0.0f,1.0f,0.0f));		
 
 	// ³adowanie macierzy do modelu
 	glMatrixMode(GL_PROJECTION);	//macierz rzutowania
