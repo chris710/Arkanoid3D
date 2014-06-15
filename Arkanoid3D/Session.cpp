@@ -90,8 +90,8 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 				else
 					BallY = -BallY;
 				if (this->grid[i][j].hitBlock() == true){
-					std::cout << (this->grid[i][j].getX()+11.1)/2.01 << "\t" << (this->grid[i][j].getY()-7.5)/(-0.802) << endl;
-					this->removeBlock((this->grid[i][j].getY()-7.5)/(-0.802), ((this->grid[i][j].getX()+11.1)/2.01));
+					std::cout << i << "\t" << j << endl;
+					this->removeBlock(i,j);
 					j--;
 				}
 			}
