@@ -12,11 +12,13 @@ SilverBlock::SilverBlock(Block *wzor, int j){
 	normals = wzor->normals;	
 }
 
-bool SilverBlock::hitBlock(){
-	// czy górna œciana
-	this->health--;
-	if (this->health == 0)
-		return true;
-	else
+bool SilverBlock::hitBlock(float pilka){
+	if( this->getX() + 0.4 < pilka){
+		this->health--;
+		if (this->health == 0)
+			return true;
+		else
+			return false;
+	}else
 		return false;
 };
