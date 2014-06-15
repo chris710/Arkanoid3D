@@ -76,7 +76,7 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 	if((this->Kulka->getY())<=-15.1 && (this->Kulka->getY())>=-16.9) {			
 		if(3.5>=abs(this->Paletka->getX()-(this->Kulka->getX()))) {
 			BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/100));
-			BallX += -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/100;
+			BallX += -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)*BALL_SPEED;
 			PaddleX = 0;
 		}
 	}
@@ -84,8 +84,8 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// KOLIZJE Z BLOCZKAMI
 	for(int i=0;i<this->grid.size(); i++)
 		for(int j=0;j<this->grid[i].size(); j++) {	
-			if((abs(this->Kulka->getY() - this->grid[i][j].getY()) <= 0.9) && (abs(this->Kulka->getX() - this->grid[i][j].getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
-				if(this->Kulka->getY() >= (this->grid[i][j].getY() +1) || this->Kulka->getY() <= (this->grid[i][j].getY()-1) )
+			if((abs(this->Kulka->getY() - this->grid[i][j].getY()) <= 1) && (abs(this->Kulka->getX() - this->grid[i][j].getX()) <= 1.5)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+				if(this->Kulka->getY() >= (this->grid[i][j].getY() +0.9) || this->Kulka->getY() <= (this->grid[i][j].getY()-0.9) )
 					BallX = -BallX;
 				else
 					BallY = -BallY;

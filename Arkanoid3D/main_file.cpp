@@ -1,13 +1,11 @@
 #include"main_file.h"
 
-
 int lastTime=0;
 int interval;							//czas pomiêdzy klatkami
 int fps = 0;							//ile fpsów
 float newX = 0;							//zmiana po³o¿enia paletki
 float BallX = 0;						//po³o¿enie X pi³ki
-float BallY = -0.003;						//po³o¿enie Y pi³ki
-const float PADDLE_SPEED = 0.01;				//prêdkoœæ paletki
+float BallY = -BALL_SPEED;						//po³o¿enie Y pi³ki
 int lastFPSCheck;						//kiedy ostatnio by³y wyœweitlane fps
 Session *NewSession = new Session();
 
