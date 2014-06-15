@@ -82,17 +82,17 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 	}
 
 //// KOLIZJE Z BLOCZKAMI
-	for(vector<vector<Block> >::iterator it = this->grid.begin(); it != this->grid.end(); it++)
-		for(vector<Block>::iterator it2 = it->begin(); it2 != it->end(); it2++) {	
-			if((abs(this->Kulka->getY() - it2->getY()) <= 0.9) && (abs(this->Kulka->getX() - it2->getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
-				if(this->Kulka->getY() >= (it2->getY() +1) || this->Kulka->getY() <= (it2->getY()-1) )
+	for(int i=0;i<this->grid.size(); i++)
+		for(int j=0;j<this->grid[i].size(); j++) {	
+			if((abs(this->Kulka->getY() - this->grid[i][j].getY()) <= 0.9) && (abs(this->Kulka->getX() - this->grid[i][j].getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+				if(this->Kulka->getY() >= (this->grid[i][j].getY() +1) || this->Kulka->getY() <= (this->grid[i][j].getY()-1) )
 					BallX = -BallX;
 				else
 					BallY = -BallY;
-				if (it2->hitBlock() == true){
-					std::cout << (it2->getX()+11.1)/2.01 << "\t" << (it2->getY()-7.5)/(-0.802) << endl;
-					this->removeBlock((it2->getY()-7.5)/(-0.802), ((it2->getX()+11.1)/2.01));
-					//it2--;
+				if (this->grid[i][j].hitBlock() == true){
+					std::cout << (this->grid[i][j].getX()+11.1)/2.01 << "\t" << (this->grid[i][j].getY()-7.5)/(-0.802) << endl;
+					this->removeBlock((this->grid[i][j].getY()-7.5)/(-0.802), ((this->grid[i][j].getX()+11.1)/2.01));
+					j--;
 				}
 			}
 		}
@@ -136,9 +136,9 @@ void Session::DrawBlocks(char* filename, int ID){
 
 //// BLOCZKI
 	for(int j = 0; j<this->grid.size(); ++j)
-		for(int i = 0; i<this->grid.size(); ++i)
-			if(this->grid[i][j].id == ID )
-				this->grid[i][j].drawBlock();
+		for(int i = 0; i<this->grid[j].size(); ++i)
+			if(this->grid[j][i].id == ID )
+				this->grid[j][i].drawBlock();
 	glDeleteTextures(1,&tex);
 }
 
