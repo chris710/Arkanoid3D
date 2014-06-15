@@ -67,6 +67,9 @@ void Session::createRoom() {
 }
 
 int Session::collision(float &BallX, float &BallY, float &PaddleX) {
+	if(this->Kulka->getY()<-17) {
+		//przegrana
+	}
 	if((this->Kulka->getY())<=-15.1 && (this->Kulka->getY())>=-16.9) {			//kolizja z paletk¹
 		if(3.5>=abs(this->Paletka->getX()-(this->Kulka->getX()))) {
 			BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
@@ -74,9 +77,17 @@ int Session::collision(float &BallX, float &BallY, float &PaddleX) {
 			PaddleX = 0;
 		}
 	}
-	//if(
+	for(vector<vector<Block> >::iterator it = this->grid.begin(); it != this->grid.end(); it++) {
+		for(vector<Block>::iterator it2 = it->begin(); it2 != it->end(); it2++) {		//kolizje z bloczkami
+			//TODO usuwanie bloczka
+			if((abs(this->Kulka->getY() - it2->getY()) <= 1) && (abs(this->Kulka->getX() - it2->getX()) <= 1.5)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+				BallY = -BallY;
+			}
+			
+				//BallX = -BallX;
+		}
+	}
 	return 0;
-		//nic nie stoi na przeszkodzie
 	
 	//kolizja z bloczkiem
 	//przegrana
