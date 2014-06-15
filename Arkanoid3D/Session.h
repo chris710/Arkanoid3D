@@ -23,7 +23,7 @@ private:
 	GLuint tex;					//uchwyt na teksturê bloczka			
 	TGAImg img;					//obraz z tekstur¹ bloczka
 public:
-	vector <vector<Block>> grid;		//macierz bloczków
+	vector <vector<Block*>> grid;		//macierz bloczków
 	Paddle *Paletka;
 	Ball *Kulka;
 	Room *Pokoj;

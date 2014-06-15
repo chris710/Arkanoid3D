@@ -18,10 +18,10 @@ bool Session::win() {
 void Session::createBlocks() {
 	srand (time(NULL));
 	for(int j=0; j<12; j++){
-		vector<Block> row;
+		vector<Block*> row;
 		for(int i = 0; i<12; i++){
 			Block *Bloczek = new Block(i,j);
-			row.push_back(*Bloczek);
+			row.push_back(Bloczek);
 		}
 		this->grid.push_back(row);
 	}
@@ -30,19 +30,19 @@ void Session::createBlocks() {
 		for (int i=0; i<15; i++){
 			int x = rand() % 12;
 			int y = rand() % 12;
-			while(this->grid[x][y].id != 0 ){
+			while(this->grid[x][y]->id != 0 ){
 				x = rand() % 12;
 				y = rand() % 12;
 			}
 			if (j==1){
-				BlueBlock *Bloczek = new BlueBlock(&this->grid[x][y], j);
-				this->grid[x][y] = *Bloczek;
+				BlueBlock *Bloczek = new BlueBlock(this->grid[x][y], j);
+				this->grid[x][y] = Bloczek;
 			} else if (j==2){
-				RedBlock *Bloczek = new RedBlock(&this->grid[x][y], j);
-				this->grid[x][y] = *Bloczek;
+				RedBlock *Bloczek = new RedBlock(this->grid[x][y], j);
+				this->grid[x][y] = Bloczek;
 			} else {
-				SilverBlock *Bloczek = new SilverBlock(&this->grid[x][y], j);
-				this->grid[x][y] = *Bloczek;
+				SilverBlock *Bloczek = new SilverBlock(this->grid[x][y], j);
+				this->grid[x][y] = Bloczek;
 			}
 		}
 	
@@ -61,7 +61,7 @@ void Session::createRoom() {
 }
 
 void Session::removeBlock(int x, int y) {
-	this->grid[x][y].destroy();
+	this->grid[x][y]->destroy();
 	this->grid[x].erase(this->grid[x].begin() + y);	
 }
 
@@ -84,15 +84,15 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 	bool flaga = false;
 	for(int i=0; i<this->grid.size(); i++)
 		for(int j=0;j<this->grid[i].size(); j++) {	
-			if((abs(this->Kulka->getY() - this->grid[i][j].getY()) <= 0.9) && (abs(this->Kulka->getX() - this->grid[i][j].getX()) <= 1.5)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+			if((abs(this->Kulka->getY() - this->grid[i][j]->getY()) <= 0.9) && (abs(this->Kulka->getX() - this->grid[i][j]->getX()) <= 1.5)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
 				if ( flaga == false ){
-					if(this->Kulka->getY() >= (this->grid[i][j].getY() +0.8) || this->Kulka->getY() <= (this->grid[i][j].getY()-0.8) ) 
+					if(this->Kulka->getY() >= (this->grid[i][j]->getY() +0.8) || this->Kulka->getY() <= (this->grid[i][j]->getY()-0.8) ) 
 						BallY = -BallY;
 					else
 						BallX = -BallX;
 					flaga = true; 
 				}
-				if (this->grid[i][j].hitBlock(BallY) == true){
+				if (this->grid[i][j]->hitBlock(BallY) == true){
 					std::cout << i << "\t" << j << endl;
 					this->removeBlock(i,j);
 					j--;
@@ -133,8 +133,8 @@ void Session::DrawBlocks(char* filename, int ID){
 //// BLOCZKI
 	for(int j = 0; j<this->grid.size(); ++j)
 		for(int i = 0; i<this->grid[j].size(); ++i)
-			if(this->grid[j][i].id == ID )
-				this->grid[j][i].drawBlock();
+			if(this->grid[j][i]->id == ID )
+				this->grid[j][i]->drawBlock();
 	glDeleteTextures(1,&tex);
 }
 
