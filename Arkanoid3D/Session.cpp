@@ -83,11 +83,11 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// KOLIZJE Z BLOCZKAMI
 	for(int i=0;i<this->grid.size(); i++)
 		for(int j=0;j<this->grid[i].size(); j++) {	
-			if((abs(this->Kulka->getY() - this->grid[i][j].getY()) <= 1) && (abs(this->Kulka->getX() - this->grid[i][j].getX()) <= 1.5)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
-				if(this->Kulka->getY() >= (this->grid[i][j].getY() +0.9) || this->Kulka->getY() <= (this->grid[i][j].getY()-0.9) )
-					BallX = -BallX;
-				else
+			if((abs(this->Kulka->getY() - this->grid[i][j].getY()) <= 0.9) && (abs(this->Kulka->getX() - this->grid[i][j].getX()) <= 1.5)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+				if(this->Kulka->getY() >= (this->grid[i][j].getY() +0.8) || this->Kulka->getY() <= (this->grid[i][j].getY()-0.8) )
 					BallY = -BallY;
+				else
+					BallX = -BallX;
 				if (this->grid[i][j].hitBlock(BallY) == true){
 					std::cout << i << "\t" << j << endl;
 					this->removeBlock(i,j);
