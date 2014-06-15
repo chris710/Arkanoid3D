@@ -96,16 +96,16 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// KOLIZJE ZE SCIANAMI
 	float wallX = 12.5, wallY = 9.5;
 	if (this->Kulka->getX() <= -wallX ){
-		BallX = -BallX*(cos(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5));
-		BallY = -sin(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5)/300;
+		BallX = -BallX;//*(cos(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5));
+		//BallY = -sin(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5)/300;
 	}
-	if (this->Kulka->getX() >= wallX ) {
-		BallX = -BallX*(cos(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5));
-		BallY = -sin(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5)/300;
+	if (this->Kulka->getX() >= wallX ) {	//prawa œciana
+		BallX = -BallX;//*(cos(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5));
+		//BallY = -sin(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5)/300;
 	}
-	if (this->Kulka->getY() >= wallY){
-		BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
-		BallX = -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/300;
+	if (this->Kulka->getY() >= wallY){	//sufit
+		BallY = -BallY;//*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
+		BallX = -BallX;//-sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/300;
 	}
 
 	
