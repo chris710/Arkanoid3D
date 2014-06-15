@@ -75,23 +75,20 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// KOLIZJA Z PALETK¥
 	if((this->Kulka->getY())<=-15.1 && (this->Kulka->getY())>=-16.9) {			
 		if(3.5>=abs(this->Paletka->getX()-(this->Kulka->getX()))) {
-			BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
-			BallX += -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/300;
+			BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/100));
+			BallX += -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/100;
 			PaddleX = 0;
 		}
 	}
 
 //// KOLIZJE Z BLOCZKAMI
-	for(vector<vector<Block> >::iterator it = this->grid.begin(); it != this->grid.end(); it++) {
+	for(vector<vector<Block> >::iterator it = this->grid.begin(); it != this->grid.end(); it++)
 		for(vector<Block>::iterator it2 = it->begin(); it2 != it->end(); it2++) {	
 			//TODO usuwanie bloczka
-			if((abs(this->Kulka->getY() - it2->getY()) <= 0.75) && (abs(this->Kulka->getX() - it2->getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+			if((abs(this->Kulka->getY() - it2->getY()) <= 0.9) && (abs(this->Kulka->getX() - it2->getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
 				BallY = -BallY;
 			}
-			
-				//BallX = -BallX;
 		}
-	}
 
 //// KOLIZJE ZE SCIANAMI
 	float wallX = 12.5, wallY = 9.5;
