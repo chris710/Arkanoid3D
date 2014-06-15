@@ -3,7 +3,7 @@
 
 RedBlock::RedBlock(Block *wzor, int j){
 	id = j;
-	health = wzor->getHealth() + 1;
+	health = wzor->getHealth();
 	X = wzor->getX();	
 	Y = wzor->getY();	
 	destroyed = false;	

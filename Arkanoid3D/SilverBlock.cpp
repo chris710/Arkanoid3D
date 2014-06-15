@@ -3,7 +3,7 @@
 
 SilverBlock::SilverBlock(Block *wzor, int j){
 	id = j;
-	health = wzor->getHealth() + 1;
+	health = wzor->getHealth();
 	X = wzor->getX();	
 	Y = wzor->getY();	
 	destroyed = false;	
@@ -14,7 +14,7 @@ SilverBlock::SilverBlock(Block *wzor, int j){
 
 bool SilverBlock::hitBlock(float &BallY){
 
-	if( 1 ){	// this->getX() + 0.4 < BallY){
+	if( this->getX() + 0.8 < BallY){
 		this->health--;
 		if (this->health == 0)
 			return true;
