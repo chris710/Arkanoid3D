@@ -18,7 +18,7 @@
 #include<sstream>
 #include "tga.h"
 
-#define BALL_SPEED 0.003;				//prêdkoœæ pi³ki
+#define BALL_SPEED 0.006;				//prêdkoœæ pi³ki
 #define PADDLE_SPEED 0.01;				//prêdkoœæ paletki
 
 

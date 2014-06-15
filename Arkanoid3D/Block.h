@@ -28,26 +28,11 @@ public:
 	bool hitBlock(float &BallY);
 
 	void drawBlock();
-	 
-	float getX() {
-		return this->X;
-	}
-
-	float getY() {
-		return this->Y;
-	}
-
-	int getHealth() {
-		return this->health;
-	}
-
-	bool isDestroyed() {
-		return this->destroyed;
-	}
-
-	void destroy() {
-		this->destroyed = true;
-	}
+	float getX(); 
+	float getY();
+	int getHealth();
+	bool isDestroyed();
+	void destroy();
 };
 
 #endif //BLOCK_H

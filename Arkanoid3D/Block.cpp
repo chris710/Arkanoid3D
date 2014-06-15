@@ -68,3 +68,23 @@ void Block::drawBlock() {
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 }
+
+float Block::getX(){
+		return this->X;
+}
+
+float Block::getY() {
+		return this->Y;
+}
+
+int Block::getHealth() {
+		return this->health;
+}
+
+bool Block::isDestroyed() {
+		return this->destroyed;
+}
+
+void Block::destroy() {
+		this->destroyed = true;
+}
