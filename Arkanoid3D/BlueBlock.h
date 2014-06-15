@@ -9,7 +9,7 @@ class BlueBlock: public Block {
 public:
 	BlueBlock(Block *wzor, int j);
 	
-	bool hitBlock();
+	bool hitBlock(float &BallY);
 };
 
 #endif //BLUEBLOCK_H

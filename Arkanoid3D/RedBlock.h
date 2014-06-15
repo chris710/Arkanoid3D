@@ -9,7 +9,7 @@ class RedBlock : public Block {
 public:
 	RedBlock(Block *wzor, int j);
 
-	bool hitBlock();
+	bool hitBlock(float &BallY);
 };
 
 #endif //REDBLOCK_H

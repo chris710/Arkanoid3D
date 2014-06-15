@@ -9,7 +9,7 @@ class SilverBlock : public Block {
 public:
 	SilverBlock(Block *wzor, int j);
 
-	bool hitBlock();	
+	bool hitBlock(float &BallY);	
 };
 
 #endif //SILVERBLOCK_H

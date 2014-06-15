@@ -12,8 +12,9 @@ SilverBlock::SilverBlock(Block *wzor, int j){
 	normals = wzor->normals;	
 }
 
-bool SilverBlock::hitBlock(float pilka){
-	if( this->getX() + 0.4 < pilka){
+bool SilverBlock::hitBlock(float &BallY){
+
+	if( 1 ){	// this->getX() + 0.4 < BallY){
 		this->health--;
 		if (this->health == 0)
 			return true;

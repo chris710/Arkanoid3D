@@ -25,7 +25,7 @@ public:
 	Block(float x, float y);	//konstruktor
 	//TODO destruktor
 
-	bool hitBlock();
+	bool hitBlock(float &BallY);
 
 	void drawBlock();
 	 

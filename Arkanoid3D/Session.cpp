@@ -62,8 +62,7 @@ void Session::createRoom() {
 
 void Session::removeBlock(int x, int y) {
 	this->grid[x][y].destroy();
-	this->grid[x].erase(this->grid[x].begin() + y);
-	
+	this->grid[x].erase(this->grid[x].begin() + y);	
 }
 
 bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
@@ -75,7 +74,7 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// KOLIZJA Z PALETK¥
 	if((this->Kulka->getY())<=-15.1 && (this->Kulka->getY())>=-16.9) {			
 		if(3.5>=abs(this->Paletka->getX()-(this->Kulka->getX()))) {
-			BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/100));
+			BallY = -BallY;			//*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/100));
 			BallX += -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)*BALL_SPEED;
 			PaddleX = 0;
 		}
@@ -89,7 +88,7 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 					BallX = -BallX;
 				else
 					BallY = -BallY;
-				if (this->grid[i][j].hitBlock() == true){
+				if (this->grid[i][j].hitBlock(BallY) == true){
 					std::cout << i << "\t" << j << endl;
 					this->removeBlock(i,j);
 					j--;
@@ -99,20 +98,13 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 
 //// KOLIZJE ZE SCIANAMI
 	float wallX = 12.5, wallY = 9.5;
-	if (this->Kulka->getX() <= -wallX ){
-		BallX = -BallX;//*(cos(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5));
-		//BallY = -sin(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5)/300;
-	}
-	if (this->Kulka->getX() >= wallX ) {	//prawa œciana
-		BallX = -BallX;				//*(cos(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5));
-		//BallY = -sin(3.1415962/2*(wallY-(this->Kulka->getX()))/3.5)/300;
-	}
-	if (this->Kulka->getY() >= wallY){	//sufit
-		BallY = -BallY;		//*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
-		BallX = -BallX;		//-sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/300;
-	}
+	if (this->Kulka->getX() <= -wallX )		//lewa œciana
+		BallX = -BallX;
+	if (this->Kulka->getX() >= wallX )		//prawa œciana
+		BallX = -BallX;				
+	if (this->Kulka->getY() >= wallY)		//sufit
+		BallY = -BallY;		
 
-	
 	return true;
 
 }

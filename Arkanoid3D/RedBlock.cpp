@@ -13,9 +13,10 @@ RedBlock::RedBlock(Block *wzor, int j){
 }
 
 
-bool RedBlock::hitBlock(){
-	// przyspieszenie KULKI 
+bool RedBlock::hitBlock(float &BallY){
+ 
 	this->health--;
+//	BallY *= 2;
 	if (this->health == 0)
 		return true;
 	else

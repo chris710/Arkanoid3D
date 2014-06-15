@@ -13,7 +13,7 @@ Block::Block(float x, float y) {
 	newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);	
 }
 
-bool Block::hitBlock(){
+bool Block::hitBlock(float &BallY){
 	this->health--;
 	if (this->health == 0)
 		return true;

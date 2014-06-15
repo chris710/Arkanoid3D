@@ -12,7 +12,7 @@ BlueBlock::BlueBlock(Block *wzor, int j){
 	normals = wzor->normals;	
 }
 
-bool BlueBlock::hitBlock(){
+bool BlueBlock::hitBlock(float &BallY){
 	this->health--;
 	if (this->health == 0)
 		return true;
