@@ -86,7 +86,10 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 		for(vector<Block>::iterator it2 = it->begin(); it2 != it->end(); it2++) {	
 			if((abs(this->Kulka->getY() - it2->getY()) <= 0.9) && (abs(this->Kulka->getX() - it2->getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
 				it2->hitBlock();
-				BallY = -BallY;
+				if(this->Kulka->getY() >= (it2->getY() +1) || this->Kulka->getY() <= (it2->getY()-1) )
+					BallX = -BallX;
+				else
+					BallY = -BallY;
 			}
 		}
 
