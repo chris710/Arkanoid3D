@@ -5,7 +5,7 @@
 
 Block::Block(float x, float y) {
 	this->id = 0;
-	this->X = (-11.1f) + 2.02*x;
+	this->X = (-11.1f) + 2.01*x;
 	this->Y = ( 7.5f ) - 0.802*y;
 	this->health = 1;
 	this->destroyed = false;
