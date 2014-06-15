@@ -41,13 +41,12 @@ void Session::createBlocks() {
 				y = rand() % 12;
 			}
 			if (j==1){
-
+				BlueBlock *Bloczek = new BlueBlock(&this->grid[x][y], j);
 			} else if (j==2){
-
+				RedBlock *Bloczek = new RedBlock(&this->grid[x][y], j);
 			} else {
-
+				SilverBlock *Bloczek = new SilverBlock(&this->grid[x][y], j);
 			}
-			this->grid[x][y].id = j;
 		}
 	
 }

@@ -13,12 +13,9 @@ class BlueBlock: public Block {
 	*
 	*****/
 public:
-	BlueBlock(Block *wzor);
+	BlueBlock(Block *wzor, int j);
 
-//	void zbicie();
-//	void drugaKulka();
- 
-
+//	void uderzenie();
 
 };
 

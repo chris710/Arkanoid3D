@@ -12,6 +12,10 @@ class SilverBlock : public Block {
 	*	-
 	*
 	*****/
+public:
+	SilverBlock(Block *wzor, int j);
+
+//	void uderzenie();	
 };
 
 #endif //SILVERBLOCK_H

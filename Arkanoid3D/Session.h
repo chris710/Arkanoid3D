@@ -6,6 +6,9 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Room.h"
+#include "BlueBlock.h"
+#include "RedBlock.h"
+#include "SilverBlock.h"
 
 #include<vector>
 #include <stdlib.h>     /* srand, rand */

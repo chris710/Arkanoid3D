@@ -12,6 +12,10 @@ class RedBlock : public Block {
 	*	-
 	*
 	*****/
+public:
+	RedBlock(Block *wzor, int j);
+
+//	void uderzenie();
 };
 
 #endif //REDBLOCK_H
