@@ -33,7 +33,7 @@ void nextFrame(void) {									//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-	if ( (NewSession->Paletka->getX() + newX < 10.0) && (NewSession->Paletka->getX() + newX > -10.0) )
+	if ( (NewSession->Paletka->getX() + newX*interval < 10.0) && (NewSession->Paletka->getX() + newX*interval > -10.0) )
 		NewSession->Paletka->setX(NewSession->Paletka->getX() + newX*interval);
 						//TODO to ma byæ funkcja!!!
 	switch(NewSession->collision()) {
