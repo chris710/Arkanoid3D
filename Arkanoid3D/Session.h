@@ -54,7 +54,7 @@ public:
 	void drawAll();
 
 	//kolizje pi³ki
-	int collision(float &BallX, float &BallY, float &PadlleX);
+	bool collision(float &BallX, float &BallY, float &PadlleX);
 
 
 	//czyszczenie syfu		//TODO

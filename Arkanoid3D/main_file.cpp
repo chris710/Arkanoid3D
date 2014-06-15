@@ -32,15 +32,18 @@ void nextFrame(void) {									//to co robi siê pomiêdzy klatkami
 	lastTime=actTime;
 	printFPS(actTime);		//wypisuje fpsy
 
-	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
-	NewSession->collision(BallX,BallY,newX); //kolizje pi³ki
-	
-	if ( (NewSession->Paletka->getX() + newX*interval < 10.0) && (NewSession->Paletka->getX() + newX*interval > -10.0) )
-		NewSession->Paletka->setX(NewSession->Paletka->getX() + newX*interval);
-	NewSession->Kulka->setX(NewSession->Kulka->getX() + BallX*interval);
-	NewSession->Kulka->setY(NewSession->Kulka->getY() + BallY*interval);
+	//////// CZÊŒÆ NA MECHANIKÊ	////////////					//pamiêtaj aby mno¿yæ razy interval!
 
-	glutPostRedisplay();
+	if (NewSession->collision(BallX,BallY,newX) == false){		//kolizje pi³ki
+		// TODO przegrana !!!
+	} else{
+		if ( (NewSession->Paletka->getX() + newX*interval < 10.0) && (NewSession->Paletka->getX() + newX*interval > -10.0) )
+			NewSession->Paletka->setX(NewSession->Paletka->getX() + newX*interval);
+		NewSession->Kulka->setX(NewSession->Kulka->getX() + BallX*interval);
+		NewSession->Kulka->setY(NewSession->Kulka->getY() + BallY*interval);
+		
+		glutPostRedisplay();
+	}
 }
 
 void keyDown(int c, int x, int y) {
