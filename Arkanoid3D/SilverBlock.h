@@ -5,17 +5,11 @@
 #include "Block.h"
 
 class SilverBlock : public Block {
-	/***** 
-	* TODO:
-	*	- funkcja sprawdzaj¹ca czy zosta³ klocek zosta³ uderzony z góry
-	*	- funkcja zmieniaj¹ca teksturê ?
-	*	-
-	*
-	*****/
+
 public:
 	SilverBlock(Block *wzor, int j);
 
-//	void uderzenie();	
+	bool hitBlock();	
 };
 
 #endif //SILVERBLOCK_H

@@ -1,5 +1,5 @@
 #include "RedBlock.h"
-//plik Ÿród³a klasy czerwonego bloczka
+//plik Ÿród³a klasy czerwonego bloczka, którego zbicie powoduje przyspieszenie kulki razy 2
 
 RedBlock::RedBlock(Block *wzor, int j){
 	id = j;
@@ -12,6 +12,12 @@ RedBlock::RedBlock(Block *wzor, int j){
 	normals = wzor->normals;	
 }
 
-//void BlueBlock::uderzenie(){ }
-	
-;
+
+bool RedBlock::hitBlock(){
+	// przyspieszenie KULKI 
+	this->health--;
+	if (this->health == 0)
+		return true;
+	else
+		return false;
+};

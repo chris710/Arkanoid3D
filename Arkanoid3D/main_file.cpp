@@ -102,13 +102,6 @@ void initialize() {
     glEnable( id );
 	glEnable(GL_COLOR_MATERIAL);			//kolorek po oœwietleniu
 	glShadeModel(GL_SMOOTH);
-
-
-	
-    
-
-
-	
 }
 
 

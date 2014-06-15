@@ -16,9 +16,9 @@ bool Session::win() {
 }
 
 void Session::removeBlock(int x, int y) {
-	if(this->grid[y][x].isDestroyed()) {
-		//this.grid[y][x]->
-	}
+	this->grid[x][y].destroy();
+
+	
 }
 
 void Session::createBlocks() {
@@ -84,8 +84,8 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// KOLIZJE Z BLOCZKAMI
 	for(vector<vector<Block> >::iterator it = this->grid.begin(); it != this->grid.end(); it++)
 		for(vector<Block>::iterator it2 = it->begin(); it2 != it->end(); it2++) {	
-			//TODO usuwanie bloczka
 			if((abs(this->Kulka->getY() - it2->getY()) <= 0.9) && (abs(this->Kulka->getX() - it2->getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
+				it2->hitBlock();
 				BallY = -BallY;
 			}
 		}

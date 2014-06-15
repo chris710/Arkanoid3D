@@ -56,8 +56,7 @@ public:
 	//kolizje pi³ki
 	bool collision(float &BallX, float &BallY, float &PadlleX);
 
-
-	//czyszczenie syfu		//TODO
+	//czyszczenie syfu																			//TODO !!!
 	void clean();
 };
 

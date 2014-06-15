@@ -1,5 +1,5 @@
 #include "SilverBlock.h"
-//plik Ÿród³a klasy srebrnego bloczka
+//plik Ÿród³a klasy srebrnego bloczka, którego mo¿na zbiæ tlyko przez odbicie od górnej œciany
 
 SilverBlock::SilverBlock(Block *wzor, int j){
 	id = j;
@@ -12,6 +12,11 @@ SilverBlock::SilverBlock(Block *wzor, int j){
 	normals = wzor->normals;	
 }
 
-//void BlueBlock::uderzenie(){ }
-	
-;
+bool SilverBlock::hitBlock(){
+	// czy górna œciana
+	this->health--;
+	if (this->health == 0)
+		return true;
+	else
+		return false;
+};

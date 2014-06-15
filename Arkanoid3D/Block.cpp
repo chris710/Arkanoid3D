@@ -13,6 +13,14 @@ Block::Block(float x, float y) {
 	newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);	
 }
 
+bool Block::hitBlock(){
+	this->health--;
+	if (this->health == 0)
+		return true;
+	else
+		return false;
+}
+
 void Block::drawBlock() {
 
 	this->Macierz = mat4(1.0f);

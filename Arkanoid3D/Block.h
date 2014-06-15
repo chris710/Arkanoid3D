@@ -10,9 +10,7 @@ protected:
 	float X;	//pozycja X bloczka
 	float Y;	//pozycja Y bloczka
 	int health;	//ile uderzeñ zosta³o do zniszczenia bloczka
-	bool destroyed;	//czy zosta³ zniszczony
-
-
+	bool destroyed;				//czy zosta³ zniszczony
 
 public:
 	vector<glm::vec3> vertices;
@@ -27,8 +25,10 @@ public:
 	Block(float x, float y);	//konstruktor
 	//TODO destruktor
 
-	void drawBlock();
+	bool hitBlock();
 
+	void drawBlock();
+	 
 	float getX() {
 		return this->X;
 	}
@@ -43,22 +43,6 @@ public:
 
 	bool isDestroyed() {
 		return this->destroyed;
-	}
-
-	/***** 
-	* TODO metody:
-	*	- efekt zbicia bloczka
-	*	- usuniêcie bloczka
-	*	- rysowanie bloczka 
-	*	- uszkodzenie bloczka
-	*****/
-
-	void damage() {
-		if(this->health != 0) {
-			this->health--;
-		} else {
-			this->destroy();
-		}
 	}
 
 	void destroy() {

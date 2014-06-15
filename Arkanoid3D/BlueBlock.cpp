@@ -1,5 +1,5 @@
 #include "BlueBlock.h"
-//plik Ÿród³a klasy niebieskiego bloczka
+//plik Ÿród³a klasy niebieskiego bloczka, do którego zbicia potrzebne s¹ 2 uderzenia;
 
 BlueBlock::BlueBlock(Block *wzor, int j){
 	id = j;
@@ -12,6 +12,10 @@ BlueBlock::BlueBlock(Block *wzor, int j){
 	normals = wzor->normals;	
 }
 
-//void BlueBlock::uderzenie(){ }
-				
-;
+bool BlueBlock::hitBlock(){
+	this->health--;
+	if (this->health == 0)
+		return true;
+	else
+		return false;
+};
