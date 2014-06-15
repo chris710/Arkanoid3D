@@ -33,13 +33,13 @@ void nextFrame(void) {									//to co robi siê pomiêdzy klatkami
 	printFPS(actTime);		//wypisuje fpsy
 
 	//////// CZÊŒÆ NA MECHANIKÊ	////////////		//pamiêtaj aby mno¿yæ razy interval!
+	NewSession->collision(BallX,BallY,newX); //kolizje pi³ki
+	
 	if ( (NewSession->Paletka->getX() + newX*interval < 10.0) && (NewSession->Paletka->getX() + newX*interval > -10.0) )
 		NewSession->Paletka->setX(NewSession->Paletka->getX() + newX*interval);
-						//TODO to ma byæ funkcja!!!
-	NewSession->collision(BallX,BallY); 
-	
 	NewSession->Kulka->setX(NewSession->Kulka->getX() + BallX*interval);
 	NewSession->Kulka->setY(NewSession->Kulka->getY() + BallY*interval);
+
 	glutPostRedisplay();
 }
 

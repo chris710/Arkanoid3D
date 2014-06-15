@@ -66,19 +66,22 @@ void Session::createRoom() {
 	this->Pokoj = new Room();
 }
 
-int Session::collision(float &X, float &Y) {
-	if((this->Kulka->getY()+0.5)<=-14.5) {
+int Session::collision(float &BallX, float &BallY, float &PaddleX) {
+	if((this->Kulka->getY())<=-15.1 && (this->Kulka->getY())>=-16.9) {			//kolizja z paletk¹
 		if(3.5>=abs(this->Paletka->getX()-(this->Kulka->getX()))) {
-			Y = -Y*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
-			X = -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/500;
+			BallY = -BallY*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
+			BallX = -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/300;
+			PaddleX = 0;
 		}
 	}
+	//if(
 	return 0;
 		//nic nie stoi na przeszkodzie
-	//kolizja z paletk¹
+	
 	//kolizja z bloczkiem
 	//przegrana
 }
+
 
 void Session::DrawBlocks(char* filename, int ID){
 //// TEKSTURY
