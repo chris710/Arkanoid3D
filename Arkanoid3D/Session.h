@@ -11,6 +11,7 @@
 #include "SilverBlock.h"
 
 #include<vector>
+#include <list>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 

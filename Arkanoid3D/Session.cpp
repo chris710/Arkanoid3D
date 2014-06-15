@@ -15,12 +15,6 @@ bool Session::win() {
 	return false;
 }
 
-void Session::removeBlock(int x, int y) {
-	this->grid[x][y].destroy();
-
-	
-}
-
 void Session::createBlocks() {
 	srand (time(NULL));
 	for(int j=0; j<12; j++){
@@ -66,6 +60,12 @@ void Session::createRoom() {
 	this->Pokoj = new Room();
 }
 
+void Session::removeBlock(int x, int y) {
+	this->grid[x][y].destroy();
+	this->grid[x].erase(this->grid[x].begin() + y);
+	
+}
+
 bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 //// PORA¯KA
 	if(this->Kulka->getY()<-17) {												
@@ -85,11 +85,15 @@ bool Session::collision(float &BallX, float &BallY, float &PaddleX) {
 	for(vector<vector<Block> >::iterator it = this->grid.begin(); it != this->grid.end(); it++)
 		for(vector<Block>::iterator it2 = it->begin(); it2 != it->end(); it2++) {	
 			if((abs(this->Kulka->getY() - it2->getY()) <= 0.9) && (abs(this->Kulka->getX() - it2->getX()) <= 2.97)) {		//kolizje poziome){ //&& (this->Kulka->getY())>=-16.9)) {		//kolizje pionowe
-				it2->hitBlock();
 				if(this->Kulka->getY() >= (it2->getY() +1) || this->Kulka->getY() <= (it2->getY()-1) )
 					BallX = -BallX;
 				else
 					BallY = -BallY;
+				if (it2->hitBlock() == true){
+					std::cout << (it2->getX()+11.1)/2.01 << "\t" << (it2->getY()-7.5)/(-0.802) << endl;
+					this->removeBlock((it2->getY()-7.5)/(-0.802), ((it2->getX()+11.1)/2.01));
+					//it2--;
+				}
 			}
 		}
 
