@@ -66,13 +66,18 @@ void Session::createRoom() {
 	this->Pokoj = new Room();
 }
 
-int Session::collision() {
+int Session::collision(float &X, float &Y) {
 	if((this->Kulka->getY()+0.5)<=-14.5) {
-		if(1>=abs(this->Paletka->getX()+1-(this->Kulka->getX()+0.5))) {
-			return 1;
+		if(3.5>=abs(this->Paletka->getX()-(this->Kulka->getX()))) {
+			Y = -Y*(cos(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5));
+			X = -sin(3.1415962/2*(this->Paletka->getX()-(this->Kulka->getX()))/3.5)/500;
 		}
 	}
 	return 0;
+		//nic nie stoi na przeszkodzie
+	//kolizja z paletk¹
+	//kolizja z bloczkiem
+	//przegrana
 }
 
 void Session::DrawBlocks(char* filename, int ID){

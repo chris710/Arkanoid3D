@@ -36,19 +36,8 @@ void nextFrame(void) {									//to co robi siê pomiêdzy klatkami
 	if ( (NewSession->Paletka->getX() + newX*interval < 10.0) && (NewSession->Paletka->getX() + newX*interval > -10.0) )
 		NewSession->Paletka->setX(NewSession->Paletka->getX() + newX*interval);
 						//TODO to ma byæ funkcja!!!
-	switch(NewSession->collision()) {
-	case 0:	//nic nie stoi na przeszkodzie
-		break;
-	case 1:	//kolizja z paletk¹
-		BallY = -BallY;
-		break;
-	case 2:	//kolizja z bloczkiem
-		break;
-	case 3:	//przegrana
-		break;
-	default:
-		break;
-	}
+	NewSession->collision(BallX,BallY); 
+	
 	NewSession->Kulka->setX(NewSession->Kulka->getX() + BallX*interval);
 	NewSession->Kulka->setY(NewSession->Kulka->getY() + BallY*interval);
 	glutPostRedisplay();
