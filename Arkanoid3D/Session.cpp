@@ -33,7 +33,7 @@ void Session::createBlocks() {
 	}
 
 	for (int j=1; j<4; j++)
-		for (int i=0; i<10; i++){
+		for (int i=0; i<15; i++){
 			int x = rand() % 12;
 			int y = rand() % 12;
 			while(this->grid[x][y].id != 0 ){
@@ -42,10 +42,13 @@ void Session::createBlocks() {
 			}
 			if (j==1){
 				BlueBlock *Bloczek = new BlueBlock(&this->grid[x][y], j);
+				this->grid[x][y] = *Bloczek;
 			} else if (j==2){
 				RedBlock *Bloczek = new RedBlock(&this->grid[x][y], j);
+				this->grid[x][y] = *Bloczek;
 			} else {
 				SilverBlock *Bloczek = new SilverBlock(&this->grid[x][y], j);
+				this->grid[x][y] = *Bloczek;
 			}
 		}
 	
@@ -72,12 +75,10 @@ int Session::collision() {
 	return 0;
 }
 
-
-void Session::drawAll() {	
-	this->Pokoj->drawRoom();	
-	//// TEKSTURY
+void Session::DrawBlocks(char* filename, int ID){
+//// TEKSTURY
 	glEnable(GL_TEXTURE_2D);	
-	if (img.Load("res/bloczek.tga")==IMG_OK){
+	if (img.Load(filename)==IMG_OK){
 		glGenTextures(1,&tex); //Zainicjuj uchwyt tex
 		glBindTexture(GL_TEXTURE_2D,tex); //Przetwarzaj uchwyt tex
 	if (img.GetBPP()==24) //Obrazek 24bit
@@ -87,13 +88,23 @@ void Session::drawAll() {
 		glTexImage2D(GL_TEXTURE_2D,0,4,img.GetWidth(),img.GetHeight(),0,
 		GL_RGBA,GL_UNSIGNED_BYTE,img.GetImg());
 	else {
-	//Obrazek 16 albo 8 bit, takimi si? nie przejmujemy
+	//Obrazek 16 albo 8 bit, takimi siê nie przejmujemy
 	}}
 
+//// BLOCZKI
 	for(int j = 0; j<this->grid.size(); ++j)
 		for(int i = 0; i<this->grid.size(); ++i)
-			this->grid[i][j].drawBlock();
+			if(this->grid[i][j].id == ID )
+				this->grid[i][j].drawBlock();
 	glDeleteTextures(1,&tex);
+}
+
+void Session::drawAll() {	
+	this->Pokoj->drawRoom();	
+	this->DrawBlocks("res/bloczek.tga", 0);
+	this->DrawBlocks("res/niebieski.tga", 1);
+	this->DrawBlocks("res/czerwony.tga", 2);
+	this->DrawBlocks("res/srebrny.tga", 3);
 	this->Paletka->drawPaddle();
 	this->Kulka->drawBall();
 	

@@ -47,6 +47,9 @@ public:
 	//funkcja tworz¹ca pomieszczenie z gr¹
 	void createRoom();
 
+	//funckja rysuj¹ca odpowiednie bloczki
+	void DrawBlocks(char* filename, int ID);
+
 	//funckja rysuj¹ca
 	void drawAll();
 
