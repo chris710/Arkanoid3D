@@ -4,6 +4,7 @@
 
 
 Block::Block(float x, float y) {
+	this->id = 0;
 	this->X = x;
 	this->Y = y;
 	this->health = 1;
@@ -12,11 +13,11 @@ Block::Block(float x, float y) {
 	newLoader.load("res/bloczek.obj",this->vertices,this->uvs,this->normals);	
 }
 
-void Block::drawBlock(int i, int j) {
+void Block::drawBlock() {
 
 	this->Macierz = mat4(1.0f);
-	float k = (-11.1f) + 2.02*(float)i;
-	float l = ( 7.5f ) - 0.802*(float)j;
+	float k = (-11.1f) + 2.02*this->getX();
+	float l = ( 7.5f ) - 0.802*this->getY();
 	this->Macierz = glm::translate(this->Macierz, glm::vec3(k, l, 0.0f));
 	mat4 P=perspective(50.0f, 1.0f, 1.0f, 50.0f);
 	mat4 V = lookAt(										//wspó³rzêdne kamery	//kamera jest sta³a!

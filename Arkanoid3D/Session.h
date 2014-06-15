@@ -8,6 +8,8 @@
 #include "Room.h"
 
 #include<vector>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 using namespace std;
 //stan bloczków i stan gry

@@ -22,6 +22,7 @@ void Session::removeBlock(int x, int y) {
 }
 
 void Session::createBlocks() {
+	srand (time(NULL));
 	for(int j=0; j<12; j++){
 		vector<Block> row;
 		for(int i = 0; i<12; i++){
@@ -30,6 +31,25 @@ void Session::createBlocks() {
 		}
 		this->grid.push_back(row);
 	}
+
+	for (int j=1; j<4; j++)
+		for (int i=0; i<10; i++){
+			int x = rand() % 12;
+			int y = rand() % 12;
+			while(this->grid[x][y].id != 0 ){
+				x = rand() % 12;
+				y = rand() % 12;
+			}
+			if (j==1){
+
+			} else if (j==2){
+
+			} else {
+
+			}
+			this->grid[x][y].id = j;
+		}
+	
 }
 
 void Session::createPaddle() {
@@ -70,9 +90,10 @@ void Session::drawAll() {
 	else {
 	//Obrazek 16 albo 8 bit, takimi si? nie przejmujemy
 	}}
+
 	for(int j = 0; j<this->grid.size(); ++j)
 		for(int i = 0; i<this->grid.size(); ++i)
-			this->grid[i][j].drawBlock(i,j);
+			this->grid[i][j].drawBlock();
 	glDeleteTextures(1,&tex);
 	this->Paletka->drawPaddle();
 	this->Kulka->drawBall();

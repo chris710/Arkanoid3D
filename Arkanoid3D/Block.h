@@ -6,21 +6,28 @@
 using namespace glm;
 
 class Block {
-private:
+protected:
 	float X;	//pozycja X bloczka
 	float Y;	//pozycja Y bloczka
 	int health;	//ile uderzeñ zosta³o do zniszczenia bloczka
 	bool destroyed;	//czy zosta³ zniszczony
+
+
+
+public:
 	vector<glm::vec3> vertices;
 	vector<glm::vec2> uvs;
 	vector<glm::vec3> normals;
-
-public:
+	int id;
 	mat4 Macierz;				//macierz jednostkowa
+
+	Block(){
+	}
+
 	Block(float x, float y);	//konstruktor
 	//TODO destruktor
 
-	void drawBlock(int i, int j);
+	void drawBlock();
 
 	float getX() {
 		return this->X;
