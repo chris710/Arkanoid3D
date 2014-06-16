@@ -14,7 +14,7 @@ SilverBlock::SilverBlock(Block *wzor, int j){
 
 bool SilverBlock::hitBlock(float &BallY){
 
-	if( this->getX() + 0.8 < BallY){
+	if( this->getY() + 1 < BallY){
 		this->health--;
 		if (this->health == 0)
 			return true;
